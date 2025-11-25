@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import useConfig from '../../hooks/useConfig';
 import { ChevronUp, ChevronDown } from 'lucide-react';
 import type { 
   TableProps, 
@@ -25,6 +26,7 @@ function Table<T extends Record<string, any>>({
   bordered = false,
   striped = false
 }: TableProps<T>) {
+  const { locale } = useConfig();
   const [sortField, setSortField] = useState<keyof T | null>(null);
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -267,7 +269,7 @@ function Table<T extends Record<string, any>>({
           onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          Previous
+          {locale.table.pagination.prev}
         </button>
         
         {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -298,7 +300,7 @@ function Table<T extends Record<string, any>>({
           onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
-          Next
+          {locale.table.pagination.next}
         </button>
         
         {showSizeChanger && (
@@ -315,7 +317,7 @@ function Table<T extends Record<string, any>>({
         
         {pagination.showTotal && (
           <span className={styles['pagination-item']} style={{ cursor: 'default' }}>
-            {total} items
+            {total} {locale.table.pagination.items}
           </span>
         )}
       </div>
@@ -344,7 +346,7 @@ function Table<T extends Record<string, any>>({
             <tr>
               <td colSpan={columns.length + (rowSelection ? 1 : 0) + (expandable ? 1 : 0)} 
                   style={{ textAlign: 'center', padding: '40px', color: 'var(--color-text-secondary)' }}>
-                No data available
+                {locale.table.noData}
               </td>
             </tr>
           )}

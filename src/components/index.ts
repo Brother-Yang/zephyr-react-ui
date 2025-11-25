@@ -20,3 +20,6 @@ export { Tabs } from './Tabs';
 export type { TabsProps, TabItem, TabsSize } from './Tabs';
 export { Switch } from './Switch';
 export type { SwitchProps, SwitchSize } from './Switch';
+export { default as ConfigProvider } from '../context/ConfigProvider';
+export type { ConfigProviderProps, Locale, ThemeMode, ThemeTokens, ComponentSize } from '../types/config';
+export { enUS, zhCN } from '../context/ConfigProvider';

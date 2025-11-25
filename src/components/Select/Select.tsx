@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import useConfig from '../../hooks/useConfig';
 import type { SelectProps } from '../../types/select';
 import styles from './Select.module.css';
 import '../../styles/variables.css';
@@ -15,6 +16,7 @@ export default function Select<T extends string | number = string | number>({
   style,
   ...rest
 }: SelectProps<T>) {
+  const { locale } = useConfig();
   const rootRef = useRef<HTMLDivElement>(null);
   const isControlled = value !== undefined;
   const [internal, setInternal] = useState<T | T[] | undefined>(isControlled ? value : (multiple ? [] : undefined));
@@ -64,7 +66,7 @@ export default function Select<T extends string | number = string | number>({
       <div ref={rootRef} className={classes} style={{ position: 'relative', ...style }} {...rest}>
         <div className={styles.chips} onClick={() => !disabled && setOpen(o => !o)}>
           {selectedOptions.length === 0 && (
-            <span className={styles.placeholder}>{placeholder || 'Select options'}</span>
+            <span className={styles.placeholder}>{placeholder || locale.select.placeholderMultiple}</span>
           )}
           {selectedOptions.map(opt => (
             <span key={String(opt.value)} className={styles.chip}>
@@ -106,7 +108,7 @@ export default function Select<T extends string | number = string | number>({
         onChange={handleSingleChange}
         {...rest}
       >
-        {placeholder && <option value="" disabled>{placeholder}</option>}
+        {placeholder && <option value="" disabled>{placeholder || locale.select.placeholder}</option>}
         {options.map(opt => (
           <option key={String(opt.value)} value={String(opt.value)} disabled={opt.disabled}>
             {opt.label}

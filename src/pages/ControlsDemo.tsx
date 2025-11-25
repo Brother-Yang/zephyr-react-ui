@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Input, Select, Checkbox, Tabs, Switch } from '../components';
+import { Button, Input, Select, Checkbox, Tabs, Switch, ConfigProvider, zhCN, enUS } from '../components';
 
 export default function ControlsDemo() {
   const [text, setText] = useState('Hello');
@@ -7,6 +7,8 @@ export default function ControlsDemo() {
   const [multi, setMulti] = useState<string[]>(['apple']);
   const [checked, setChecked] = useState<boolean>(true);
   const [toggle, setToggle] = useState<boolean>(true);
+  const [dark, setDark] = useState<boolean>(false);
+  const [localeKey, setLocaleKey] = useState<'en' | 'zh'>('en');
 
   const options = [
     { label: 'Apple', value: 'apple' },
@@ -15,9 +17,23 @@ export default function ControlsDemo() {
   ];
 
   return (
+    <ConfigProvider theme={dark ? 'dark' : 'light'} locale={localeKey === 'en' ? enUS : zhCN}>
     <div style={{ padding: '40px', maxWidth: '900px', margin: '0 auto' }}>
       <h2 style={{ fontSize: 28, fontWeight: 700, marginBottom: 16, color: 'var(--color-text)' }}>Controls Demo</h2>
       <div style={{ display: 'grid', gap: 20 }}>
+        <section>
+          <h3 style={{ fontSize: 18, fontWeight: 600 }}>Global Config</h3>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+            <span>Theme:</span>
+            <Switch checked={dark} onChange={setDark} label={dark ? 'Dark' : 'Light'} />
+            <span>Locale:</span>
+            <Select
+              options={[{ label: 'English', value: 'en' }, { label: '简体中文', value: 'zh' }]}
+              value={localeKey}
+              onChange={(v) => setLocaleKey(v as 'en' | 'zh')}
+            />
+          </div>
+        </section>
         <section>
           <h3 style={{ fontSize: 18, fontWeight: 600 }}>Tabs</h3>
           <Tabs
@@ -81,5 +97,6 @@ export default function ControlsDemo() {
         </section>
       </div>
     </div>
+    </ConfigProvider>
   );
 }

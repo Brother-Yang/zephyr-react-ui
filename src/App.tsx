@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { ConfigProvider, enUS } from "./components";
 import Home from "@/pages/Home";
 import TableDemo from "@/pages/TableDemo";
 import FormDemo from "@/pages/FormDemo";
@@ -6,6 +7,7 @@ import ControlsDemo from "@/pages/ControlsDemo";
 
 export default function App() {
   return (
+    <ConfigProvider locale={enUS} theme="light">
     <Router>
       <nav style={{ padding: '20px', borderBottom: '1px solid var(--color-border)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', gap: '20px' }}>
@@ -31,5 +33,6 @@ export default function App() {
         <Route path="/other" element={<div className="text-center text-xl">Other Page - Coming Soon</div>} />
       </Routes>
     </Router>
+    </ConfigProvider>
   );
 }
