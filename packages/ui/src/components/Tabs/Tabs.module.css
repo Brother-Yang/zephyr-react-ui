@@ -38,7 +38,7 @@
   border-radius: 2px;
 }
 
-.content { padding: var(--spacing-md); }
+.children { padding: var(--spacing-md); }
 
 .tabs-small .tab { padding: var(--spacing-xs) var(--spacing-sm); font-size: var(--font-size-xs); }
 .tabs-medium .tab { font-size: var(--font-size-sm); }

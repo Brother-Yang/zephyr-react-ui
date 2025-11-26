@@ -11,7 +11,9 @@ import {
   Select,
   Switch,
   Table,
-  Tabs
+  Tabs,
+  Form,
+  FormItem
 } from '@demo/ui';
 
 export default function App() {
@@ -47,10 +49,14 @@ export default function App() {
           </Button>
         </div>
 
-        <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }}>
-          <div style={{ display: 'grid', gap: 12 }}>
+        <div style={{ display: 'grid', gap: 12 }}>
+          <div>
             <Input value={inputValue} onChange={setInputValue} placeholder="Input" />
+          </div>
+          <div>
             <Checkbox checked={checked} onChange={setChecked} label="Checkbox" />
+          </div>
+          <div>
             <RadioGroup
               options={[
                 { label: 'A', value: 'a' },
@@ -60,6 +66,8 @@ export default function App() {
               value={radioValue}
               onChange={setRadioValue}
             />
+          </div>
+          <div>
             <Select
               options={[
                 { label: 'Apple', value: 'apple' },
@@ -70,6 +78,8 @@ export default function App() {
               onChange={setSelectValue}
               placeholder={locale.select.placeholder}
             />
+          </div>
+          <div>
             <Select
               options={[
                 { label: 'Red', value: 'red' },
@@ -81,10 +91,11 @@ export default function App() {
               multiple
               placeholder={locale.select.placeholderMultiple}
             />
+          </div>
+          <div>
             <Switch checked={switchOn} onChange={setSwitchOn} label={switchOn ? 'On' : 'Off'} />
           </div>
-
-          <div style={{ display: 'grid', gap: 12 }}>
+          <div>
             <Table
               dataSource={data}
               columns={columns as any}
@@ -93,8 +104,7 @@ export default function App() {
               striped
             />
           </div>
-
-          <div style={{ display: 'grid', gap: 12 }}>
+          <div>
             <Table
               dataSource={[]}
               columns={columns as any}
@@ -103,6 +113,55 @@ export default function App() {
               striped
             />
           </div>
+        </div>
+
+        <div style={{ borderTop: '1px solid var(--dui-border)', paddingTop: 16 }}>
+          <h3 style={{ margin: '8px 0' }}>Form Example</h3>
+          <Form
+            initialValues={{ username: '', agree: false, fruit: '', colors: [], newsletter: false }}
+            onFinish={(vals) => console.log('form submit', vals)}
+            layout="vertical"
+          >
+            <FormItem name="username" label="Username" required rules={[{ min: 3, message: 'Min 3 chars' }]}>
+              <Input placeholder="Enter username" />
+            </FormItem>
+
+            <FormItem name="newsletter" label="Subscribe" valuePropName="checked">
+              <Switch label="Subscribe to newsletter" />
+            </FormItem>
+
+            <FormItem name="agree" label="Agreement" required valuePropName="checked" rules={[{ required: true, message: 'Please accept' }]}>
+              <Checkbox label="I agree to the terms" />
+            </FormItem>
+
+            <FormItem name="fruit" label="Favorite Fruit" required>
+              <Select
+                options={[
+                  { label: 'Apple', value: 'apple' },
+                  { label: 'Banana', value: 'banana' },
+                  { label: 'Cherry', value: 'cherry' },
+                ]}
+                placeholder="Select one"
+              />
+            </FormItem>
+
+            <FormItem name="colors" label="Colors (multiple)" required>
+              <Select
+                options={[
+                  { label: 'Red', value: 'red' },
+                  { label: 'Green', value: 'green' },
+                  { label: 'Blue', value: 'blue' },
+                ]}
+                multiple
+                placeholder="Select colors"
+              />
+            </FormItem>
+
+            <div style={{ display: 'flex', gap: 12 }}>
+              <Button type="submit">Submit</Button>
+              <Button type="reset" variant="secondary">Reset</Button>
+            </div>
+          </Form>
         </div>
 
         <Tabs

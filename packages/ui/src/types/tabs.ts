@@ -6,7 +6,7 @@ export interface TabItem {
   key: string;
   label: React.ReactNode;
   disabled?: boolean;
-  content: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {

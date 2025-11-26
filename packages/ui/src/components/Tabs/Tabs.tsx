@@ -59,7 +59,7 @@ export default function Tabs({
           if (!active && destroyInactiveTabPane) return null;
           return (
             <div key={item.key} style={{ display: active ? 'block' : 'none' }}>
-              {item.content}
+              {item.children}
             </div>
           );
         })}
