@@ -1,0 +1,32 @@
+.form {
+  display: block;
+}
+
+.form-horizontal .item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+}
+
+.item {
+  margin-bottom: var(--spacing-md);
+}
+
+.label {
+  color: var(--color-text);
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+}
+
+.control {
+  display: block;
+}
+
+.help {
+  color: #e53e3e;
+  font-size: var(--font-size-xs);
+  margin-top: var(--spacing-xs);
+}
+
+.disabled { opacity: 0.6; pointer-events: none; }
+

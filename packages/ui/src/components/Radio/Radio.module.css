@@ -1,0 +1,56 @@
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-text);
+}
+
+.box {
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-background);
+  transition: all var(--transition-medium);
+  position: relative;
+}
+
+.input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: none;
+}
+
+.checked .dot { display: inline-block; }
+
+.label { color: var(--color-text); }
+.disabled { opacity: 0.6; cursor: not-allowed; }
+
+.small .box { width: 16px; height: 16px; }
+.small .input { width: 16px; height: 16px; }
+.small .dot { width: 8px; height: 8px; }
+
+.large .box { width: 22px; height: 22px; }
+.large .input { width: 22px; height: 22px; }
+.large .dot { width: 12px; height: 12px; }
+
+.group { display: flex; gap: var(--spacing-md); }
+.vertical { flex-direction: column; }
