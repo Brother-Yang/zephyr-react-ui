@@ -1,0 +1,7 @@
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  min-height: 80px;
+}

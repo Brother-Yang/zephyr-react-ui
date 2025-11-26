@@ -9,3 +9,4 @@ export { Select } from './components/Select';
 export { Switch } from './components/Switch';
 export { Table } from './components/Table';
 export { Tabs } from './components/Tabs';
+export { Empty } from './components/Empty';

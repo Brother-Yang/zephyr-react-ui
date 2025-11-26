@@ -93,6 +93,16 @@ export default function App() {
               striped
             />
           </div>
+
+          <div style={{ display: 'grid', gap: 12 }}>
+            <Table
+              dataSource={[]}
+              columns={columns as any}
+              pagination={{ pageSize: 5, showTotal: true }}
+              bordered
+              striped
+            />
+          </div>
         </div>
 
         <Tabs

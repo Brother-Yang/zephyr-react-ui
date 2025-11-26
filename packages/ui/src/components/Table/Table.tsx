@@ -10,6 +10,7 @@ import type {
 } from '../../types/table';
 import styles from './Table.module.css';
 import '../../styles/variables.css';
+import { Empty } from '../Empty';
 
 function Table<T extends Record<string, any>>({
   dataSource,
@@ -344,9 +345,11 @@ function Table<T extends Record<string, any>>({
           {!loading && paginatedData.map((record, index) => renderRow(record, index))}
           {!loading && paginatedData.length === 0 && (
             <tr>
-              <td colSpan={columns.length + (rowSelection ? 1 : 0) + (expandable ? 1 : 0)} 
-                  style={{ textAlign: 'center', padding: '40px', color: 'var(--color-text-secondary)' }}>
-                {locale.table.noData}
+              <td
+                colSpan={columns.length + (rowSelection ? 1 : 0) + (expandable ? 1 : 0)}
+                style={{ padding: '40px' }}
+              >
+                <Empty>{locale.table.noData}</Empty>
               </td>
             </tr>
           )}
