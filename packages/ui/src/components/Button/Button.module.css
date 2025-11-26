@@ -19,6 +19,11 @@
   border-color: var(--color-border-hover);
 }
 
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
 .button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
@@ -43,12 +48,18 @@
   background-color: transparent;
   color: var(--color-text);
 }
+.button-outline:hover {
+  border-color: var(--color-border-hover);
+}
 
 .button-ghost {
   background-color: transparent;
   color: var(--color-text);
   border-color: transparent;
   box-shadow: none;
+}
+.button-ghost:hover {
+  background-color: var(--color-surface-hover);
 }
 
 /* Sizes */
@@ -72,4 +83,3 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-

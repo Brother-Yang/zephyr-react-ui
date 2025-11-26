@@ -45,8 +45,8 @@
 }
 
 /* Status */
-.status-error { border-color: #e53e3e; }
-.status-success { border-color: #38a169; }
-.status-warning { border-color: #dd6b20; }
+.status-error { border-color: var(--color-error); }
+.status-success { border-color: var(--color-success); }
+.status-warning { border-color: var(--color-warning); }
 
 .disabled { opacity: 0.6; cursor: not-allowed; }

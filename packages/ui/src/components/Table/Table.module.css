@@ -186,7 +186,7 @@
 
 .pagination-item.active {
   background-color: var(--color-primary);
-  color: white;
+  color: #ffffff;
   border-color: var(--color-primary);
 }
 
@@ -202,47 +202,8 @@
 }
 
 /* Row Selection */
-.table-row.selected {
-  background-color: var(--color-primary-light);
-}
-
-.table-row.selected:hover {
-  background-color: var(--color-primary-light);
-}
-
-.checkbox {
-  width: 16px;
-  height: 16px;
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-small);
-  background-color: var(--color-background);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  display: inline-block;
-  position: relative;
-}
-
-.checkbox.checked {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-}
-
-.checkbox.checked::after {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 5px;
-  width: 3px;
-  height: 7px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-.checkbox.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+.table-row.selected { background-color: var(--color-primary-light); }
+.table-row.selected:hover { background-color: var(--color-primary-light); }
 
 /* Responsive */
 @media (max-width: 768px) {

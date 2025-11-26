@@ -23,10 +23,9 @@
 }
 
 .help {
-  color: #e53e3e;
+  color: var(--color-error);
   font-size: var(--font-size-xs);
   margin-top: var(--spacing-xs);
 }
 
 .disabled { opacity: 0.6; pointer-events: none; }
-
