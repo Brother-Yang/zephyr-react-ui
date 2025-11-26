@@ -34,14 +34,13 @@ export default function Select<T extends string | number = string | number>({
     onChange?.(next);
   };
 
-  // Single select (native)
-  const handleSingleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const str = e.target.value;
-    const found = options.find(opt => String(opt.value) === str);
-    setValue((found ? found.value : (str as unknown)) as T);
-  };
+  // Single select (custom dropdown)
+  const selectedLabel = useMemo(() => {
+    if (currentSingle === undefined || currentSingle === '') return undefined;
+    return options.find(opt => String(opt.value) === String(currentSingle))?.label;
+  }, [options, currentSingle]);
 
-  // Multi select (custom chips + dropdown)
+  // Dropdown state (used for both single and multiple)
   const [open, setOpen] = useState(false);
   const selectedOptions = useMemo(() => options.filter(opt => currentMulti.includes(opt.value as T)), [options, currentMulti]);
 
@@ -100,21 +99,37 @@ export default function Select<T extends string | number = string | number>({
   }
 
   return (
-    <div className={classes} style={style}>
-      <select
-        className={styles.native}
-        disabled={disabled}
-        value={currentSingle === undefined ? '' : String(currentSingle)}
-        onChange={handleSingleChange}
-        {...rest}
-      >
-        {placeholder && <option value="" disabled>{placeholder || locale.select.placeholder}</option>}
-        {options.map(opt => (
-          <option key={String(opt.value)} value={String(opt.value)} disabled={opt.disabled}>
-            {opt.label}
-          </option>
-        ))}
-      </select>
+    <div ref={rootRef} className={classes} style={{ position: 'relative', ...style }} {...rest}>
+      <div className={styles.display} onClick={() => !disabled && setOpen(o => !o)}>
+        {selectedLabel === undefined ? (
+          <span className={styles.placeholder}>{placeholder || locale.select.placeholder}</span>
+        ) : (
+          <span className={styles.value}>{selectedLabel}</span>
+        )}
+      </div>
+      <button type="button" className={styles.caret} onClick={() => !disabled && setOpen(o => !o)} disabled={disabled}>▾</button>
+      {open && (
+        <div className={styles.dropdown} role="listbox">
+          {options.map(opt => {
+            const selected = String(opt.value) === String(currentSingle);
+            return (
+              <div
+                key={String(opt.value)}
+                role="option"
+                aria-selected={selected}
+                className={`${styles.item} ${selected ? styles.selected : ''} ${opt.disabled ? styles.disabled : ''}`}
+                onClick={() => {
+                  if (opt.disabled) return;
+                  setValue(opt.value as T);
+                  setOpen(false);
+                }}
+              >
+                <span>{opt.label}</span>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

@@ -9,8 +9,8 @@
 }
 
 .multiple {
-  padding: var(--spacing-xs);
-  align-items: stretch;
+  padding: 0 var(--spacing-sm);
+  align-items: center;
 }
 
 .chips {
@@ -18,7 +18,19 @@
   flex-wrap: wrap;
   gap: var(--spacing-xs);
   flex: 1;
+  padding: var(--spacing-sm) 0;
 }
+
+/* Single display area */
+.display {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: var(--spacing-sm) 0;
+  flex: 1;
+}
+.value { color: var(--color-text); }
 
 .chip {
   display: inline-flex;
@@ -41,6 +53,8 @@
 
 .caret { color: var(--color-text-secondary); margin-left: auto; }
 .placeholder { color: var(--color-text-secondary); }
+.placeholder { /* base left alignment in single mode */ }
+.multiple .placeholder { width: 100%; display: flex; align-items: center;}
 
 .dropdown {
   position: absolute;
@@ -68,46 +82,14 @@
 .item.disabled { color: var(--color-text-disabled); cursor: not-allowed; }
 .item.selected { background: var(--color-primary-light); color: var(--color-primary); }
 
-.native {
-  appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: var(--color-text);
-  padding: var(--spacing-sm) var(--spacing-md);
-  font-size: var(--font-size-sm);
-}
-
-.native[multiple] {
-  appearance: auto;
-  -webkit-appearance: auto;
-  display: block;
-  width: 100%;
-  padding: 0;
-  background: var(--color-background);
-  border-radius: var(--radius-small);
-}
-
-.native[multiple] option {
-  padding: var(--spacing-xs) var(--spacing-sm);
-  margin: 2px;
-  border-radius: var(--radius-small);
-}
-
-.native[multiple] option:checked {
-  background: var(--color-primary-light);
-  color: var(--color-primary);
-  font-weight: 600;
-}
 
 .select:hover { border-color: var(--color-border-hover); }
 .select:focus-within { border-color: var(--color-border-focus); box-shadow: 0 0 0 3px var(--color-primary-light); }
 
-.select-small .native { height: 28px; font-size: var(--font-size-xs); }
-.select-medium .native { height: 36px; font-size: var(--font-size-sm); }
-.select-large .native { height: 44px; font-size: var(--font-size-base); }
+.select-small { min-height: 28px; }
+.select-medium { min-height: 36px; }
+.select-large { min-height: 44px; }
 
-.select-large .native[multiple] option { padding: var(--spacing-sm); }
+/* spacing alignment for larger size if needed */
 
 .disabled { opacity: 0.6; cursor: not-allowed; }
