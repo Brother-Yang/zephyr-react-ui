@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import { useConfig } from '../../config';
-import { ChevronUp, ChevronDown } from 'lucide-react';
 import type { 
   TableProps, 
   TableColumn, 
@@ -182,9 +181,6 @@ function Table<T extends Record<string, any>>({
             onClick={() => handleSort(column)}
           >
             {column.title}
-            {column.sortable && sortField === column.key && (
-              sortOrder === 'asc' ? <ChevronUp size={12} /> : <ChevronDown size={12} />
-            )}
           </th>
         ))}
       </tr>
