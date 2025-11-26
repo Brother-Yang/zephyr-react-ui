@@ -1,17 +1,15 @@
 /* Table Component Styles */
+
 .table {
   width: 100%;
   border-collapse: collapse;
   background-color: var(--color-background);
   border-radius: var(--radius-medium);
   overflow: hidden;
-  box-shadow: var(--shadow-small);
-  transition: box-shadow var(--transition-medium);
+  box-shadow: none;
 }
 
-.table:hover {
-  box-shadow: var(--shadow-medium);
-}
+.table:hover { box-shadow: none; }
 
 .table-bordered {
   border: 1px solid var(--color-border);
@@ -23,8 +21,8 @@
 
 /* Table Header */
 .table-header {
-  background-color: var(--color-surface);
-  font-weight: var(--font-weight-semibold);
+  background-color: var(--color-background);
+  font-weight: var(--font-weight-medium);
   color: var(--color-text);
   font-size: var(--font-size-sm);
   text-align: left;
@@ -32,7 +30,7 @@
 
 .table-header-cell {
   padding: var(--spacing-md);
-  border-bottom: 2px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
   position: relative;
   user-select: none;
 }
@@ -170,7 +168,7 @@
 .pagination-item {
   padding: var(--spacing-sm) var(--spacing-md);
   border: 1px solid var(--color-border);
-  background-color: var(--color-background);
+  background-color: transparent;
   color: var(--color-text);
   text-decoration: none;
   border-radius: var(--radius-small);
@@ -179,27 +177,12 @@
   font-size: var(--font-size-sm);
 }
 
-.pagination-item:hover {
-  background-color: var(--color-surface-hover);
-  border-color: var(--color-border-hover);
-}
+.pagination-item:hover { background-color: var(--color-surface); border-color: var(--color-border-hover); }
 
-.pagination-item.active {
-  background-color: var(--color-primary);
-  color: #ffffff;
-  border-color: var(--color-primary);
-}
+.pagination-item.active { background-color: transparent; color: var(--color-primary); border-color: var(--color-primary); }
 
-.pagination-item.disabled {
-  color: var(--color-text-disabled);
-  cursor: not-allowed;
-  background-color: var(--color-surface);
-}
-
-.pagination-item.disabled:hover {
-  background-color: var(--color-surface);
-  border-color: var(--color-border);
-}
+.pagination-item.disabled { color: var(--color-text-disabled); cursor: not-allowed; background-color: transparent; }
+.pagination-item.disabled:hover { background-color: transparent; border-color: var(--color-border); }
 
 /* Row Selection */
 .table-row.selected { background-color: var(--color-primary-light); }

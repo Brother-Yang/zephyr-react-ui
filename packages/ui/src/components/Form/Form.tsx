@@ -158,14 +158,18 @@ export function FormItem<TValues extends AnyValues = AnyValues>({
 
   const control = React.cloneElement(children, childProps);
 
-  const itemClasses = [styles.item, className].filter(Boolean).join(' ');
+  const itemClasses = [styles.item, error ? styles['has-error'] : '', className].filter(Boolean).join(' ');
 
   return (
     <div className={itemClasses} style={style}>
-      {label && <div className={styles.label}>{label}{required && ' *'}</div>}
+      {label && (
+        <div className={styles.label}>
+          {label}
+          {required && <span className={styles.asterisk}>*</span>}
+        </div>
+      )}
       <div className={styles.control}>{control}</div>
       <div className={styles.help}>{error || help || null}</div>
     </div>
   );
 }
-
