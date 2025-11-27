@@ -24,6 +24,8 @@
   transition: background-color var(--transition-medium), color var(--transition-medium);
 }
 
+.tab:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--color-primary-light); }
+
 .tab:hover { background: var(--color-surface-hover); }
 .tab.disabled { color: var(--color-text-disabled); cursor: not-allowed; }
 .tab.active { color: var(--color-primary); }

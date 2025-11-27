@@ -57,6 +57,7 @@ export default function App() {
   const [radioSelected, setRadioSelected] = useState<string | null>(null);
   const [expandedKeys, setExpandedKeys] = useState<string[]>([]);
   const [tableLoading, setTableLoading] = useState(false);
+  const [tabsActive, setTabsActive] = useState<string>('a1');
 
   return (
     <ConfigProvider theme={dark ? 'dark' : 'light'} locale={locale}>
@@ -499,12 +500,53 @@ export default function App() {
           </div>
         </div>
 
-        <Tabs
-          items={[
-            { key: 'tab1', label: 'Tab 1', children: 'Content 1' },
-            { key: 'tab2', label: 'Tab 2', children: 'Content 2' }
-          ]}
-        />
+        <div style={{ borderTop: '1px solid var(--dui-border)', paddingTop: 16 }}>
+          <h3 style={{ margin: '8px 0' }}>Tabs Examples</h3>
+          <div style={{ display: 'grid', gap: 12 }}>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Tabs items={[{ key: 's1', label: 'Small 1', children: 'Small Content 1' }, { key: 's2', label: 'Small 2', children: 'Small Content 2' }]} size="small" />
+              <Tabs items={[{ key: 'm1', label: 'Medium 1', children: 'Medium Content 1' }, { key: 'm2', label: 'Medium 2', children: 'Medium Content 2' }]} size="medium" />
+              <Tabs items={[{ key: 'l1', label: 'Large 1', children: 'Large Content 1' }, { key: 'l2', label: 'Large 2', children: 'Large Content 2' }]} size="large" />
+            </div>
+
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Tabs items={[{ key: 'b1', label: 'Bordered 1', children: 'Bordered' }, { key: 'b2', label: 'Bordered 2', children: 'Bordered' }]} bordered />
+              <Tabs items={[{ key: 'nb1', label: 'NoBorder 1', children: 'No Border' }, { key: 'nb2', label: 'NoBorder 2', children: 'No Border' }]} bordered={false} />
+            </div>
+
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Tabs
+                items={[
+                  { key: 'd1', label: 'Enabled', children: 'Enabled Content' },
+                  { key: 'd2', label: 'Disabled', children: 'Disabled Content', disabled: true }
+                ]}
+                defaultActiveKey="d1"
+              />
+              <Tabs
+                items={[
+                  { key: 'x1', label: 'Mount/Unmount', children: <div>Active Only</div> },
+                  { key: 'x2', label: 'Another', children: <div>Other Content</div> }
+                ]}
+                destroyInactiveTabPane
+              />
+            </div>
+
+            <div>
+              <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
+                <Button onClick={() => setTabsActive('a1')}>Activate A1</Button>
+                <Button onClick={() => setTabsActive('a2')}>Activate A2</Button>
+              </div>
+              <Tabs
+                items={[
+                  { key: 'a1', label: 'A1', children: 'Controlled Content 1' },
+                  { key: 'a2', label: 'A2', children: 'Controlled Content 2' }
+                ]}
+                activeKey={tabsActive}
+                onChange={setTabsActive}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </ConfigProvider>
   );

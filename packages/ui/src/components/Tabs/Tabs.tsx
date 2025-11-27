@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import type { TabsProps } from '../../types/tabs';
 import styles from './Tabs.module.css';
 import '../../styles/variables.css';
@@ -19,6 +19,7 @@ export default function Tabs({
   const [internal, setInternal] = useState<string>(defaultActiveKey || firstKey || (items[0]?.key ?? ''));
   const isControlled = activeKey !== undefined;
   const current = isControlled ? activeKey! : internal;
+  const idRef = useRef(`tabs-${Math.random().toString(36).slice(2)}`);
 
   const rootClasses = [
     styles.tabs,
@@ -34,37 +35,77 @@ export default function Tabs({
     onChange?.(key);
   };
 
+  const focusTab = (idx: number) => {
+    const buttons = document.querySelectorAll<HTMLButtonElement>(`#${idRef.current}-tablist [role="tab"]`);
+    const el = buttons[idx];
+    el?.focus();
+  };
+
+  const currentIndex = items.findIndex(i => i.key === current);
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const len = items.length;
+    const move = (dir: 1 | -1) => {
+      let ni = currentIndex;
+      if (ni < 0) ni = dir > 0 ? 0 : len - 1;
+      else ni = (ni + dir + len) % len;
+      // skip disabled
+      let tries = 0;
+      while (items[ni]?.disabled && tries < len) { ni = (ni + dir + len) % len; tries++; }
+      const nextKey = items[ni]?.key;
+      if (nextKey) { handleChange(nextKey); focusTab(ni); }
+    };
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); move(1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
+    else if (e.key === 'Home') { e.preventDefault(); const ni = items.findIndex(i => !i.disabled); if (ni >= 0) { handleChange(items[ni].key); focusTab(ni); } }
+    else if (e.key === 'End') { e.preventDefault(); const ni = [...items].reverse().findIndex(i => !i.disabled); if (ni >= 0) { const idx = items.length - 1 - ni; handleChange(items[idx].key); focusTab(idx); } }
+  };
+
   return (
     <div className={rootClasses} style={style} {...rest}>
-      <div className={styles.nav} role="tablist">
-        {items.map(item => (
+      <div
+        id={`${idRef.current}-tablist`}
+        className={styles.nav}
+        role="tablist"
+        aria-orientation="horizontal"
+        onKeyDown={onKeyDown}
+      >
+        {items.map((item, idx) => (
           <button
             key={item.key}
+            id={`${idRef.current}-tab-${item.key}`}
             role="tab"
             aria-selected={current === item.key}
             aria-disabled={!!item.disabled}
+            aria-controls={`${idRef.current}-panel-${item.key}`}
             className={`${styles.tab} ${current === item.key ? styles.active : ''} ${item.disabled ? styles.disabled : ''}`}
             onClick={() => handleChange(item.key)}
             disabled={item.disabled}
             type="button"
+            tabIndex={(function(){
+              const focusIdx = currentIndex >= 0 ? currentIndex : (items.findIndex(i => !i.disabled) >= 0 ? items.findIndex(i => !i.disabled) : 0);
+              return idx === focusIdx ? 0 : -1;
+            })()}
           >
             {item.label}
             {current === item.key && <span className={styles.ink} aria-hidden />}
           </button>
         ))}
       </div>
-      <div className={styles.content} role="tabpanel">
-        {items.map(item => {
-          const active = current === item.key;
-          if (!active && destroyInactiveTabPane) return null;
-          return (
-            <div key={item.key} style={{ display: active ? 'block' : 'none' }}>
-              {item.children}
-            </div>
-          );
-        })}
-      </div>
+      {items.map(item => {
+        const active = current === item.key;
+        if (!active && destroyInactiveTabPane) return null;
+        return (
+          <div
+            key={item.key}
+            id={`${idRef.current}-panel-${item.key}`}
+            role="tabpanel"
+            aria-labelledby={`${idRef.current}-tab-${item.key}`}
+            style={{ display: active ? 'block' : 'none', padding: 'var(--spacing-md)' }}
+          >
+            {item.children}
+          </div>
+        );
+      })}
     </div>
   );
 }
-
