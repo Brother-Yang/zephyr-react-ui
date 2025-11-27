@@ -14,7 +14,8 @@ import {
   Table,
   Tabs,
   Form,
-  FormItem
+  FormItem,
+  Empty
 } from '@demo/ui';
 
 export default function App() {
@@ -257,6 +258,15 @@ export default function App() {
               bordered
               striped
             />
+          </div>
+
+          <div style={{ borderTop: '1px solid var(--dui-border)', paddingTop: 16 }}>
+            <h3 style={{ margin: '8px 0' }}>Empty Examples</h3>
+            <div style={{ display: 'grid', gap: 12 }}>
+              <Empty>Empty</Empty>
+              <Empty icon={<span>📦</span>} description="No items found" />
+              <Empty size="large" icon={<span>🗂️</span>} description="Nothing here yet" actions={<Button onClick={() => alert('Create')}>Create</Button>} />
+            </div>
           </div>
 
           <div style={{ borderTop: '1px solid var(--dui-border)', paddingTop: 16 }}>

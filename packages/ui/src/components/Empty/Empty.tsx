@@ -2,11 +2,23 @@ import React from 'react';
 import styles from './Empty.module.css';
 import '../../styles/variables.css';
 
-export default function Empty({ children, className = '', style }: { children?: React.ReactNode; className?: string; style?: React.CSSProperties }) {
-  const classes = [styles.empty, className].filter(Boolean).join(' ');
+export interface EmptyProps {
+  icon?: React.ReactNode;
+  description?: React.ReactNode;
+  actions?: React.ReactNode;
+  size?: 'small' | 'medium' | 'large';
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+}
+
+export default function Empty({ icon, description, actions, size = 'medium', className = '', style, children }: EmptyProps) {
+  const classes = [styles.empty, styles[size], className].filter(Boolean).join(' ');
   return (
-    <div className={classes} style={style}>
-      {children ?? 'Empty'}
+    <div className={classes} style={style} role="status" aria-live="polite">
+      {icon && <div className={styles.icon} aria-hidden>{icon}</div>}
+      <div className={styles.text}>{children ?? description ?? 'Empty'}</div>
+      {actions && <div className={styles.actions}>{actions}</div>}
     </div>
   );
 }
