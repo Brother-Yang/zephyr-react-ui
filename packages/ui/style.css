@@ -40,6 +40,17 @@
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
+
+  /* 组件尺寸变量 */
+  --button-height-sm: 32px;
+  --button-height-md: 40px;
+  --button-height-lg: 48px;
+  --button-padding-inline-sm: var(--spacing-sm);
+  --button-padding-inline-md: var(--spacing-md);
+  --button-padding-inline-lg: var(--spacing-lg);
+  --spinner-size-sm: 12px;
+  --spinner-size-md: 16px;
+  --spinner-size-lg: 18px;
   
   /* 字体大小 */
   --font-size-xs: 12px;
@@ -100,3 +111,4 @@
   --color-warning: #f6e05e;
   --color-error: #fc8181;
 }
+

@@ -116,6 +116,37 @@ export default function App() {
         </div>
 
         <div style={{ borderTop: '1px solid var(--dui-border)', paddingTop: 16 }}>
+          <h3 style={{ margin: '8px 0' }}>Button Examples</h3>
+          <div style={{ display: 'grid', gap: 12 }}>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Button>Primary</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button variant="outline">Outline</Button>
+              <Button variant="ghost">Ghost</Button>
+            </div>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+              <Button size="small">Small</Button>
+              <Button size="medium">Medium</Button>
+              <Button size="large">Large</Button>
+            </div>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Button disabled>Disabled</Button>
+              <Button loading>Loading</Button>
+              <Button icon={<span>★</span>}>With Icon</Button>
+              <Button loading icon={<span>★</span>}>Loading Icon</Button>
+            </div>
+            <div>
+              <Button block>Block</Button>
+            </div>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Button rounded>Rounded</Button>
+              <Button type="button">Type Button</Button>
+              <Button type="reset" variant="secondary">Type Reset</Button>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ borderTop: '1px solid var(--dui-border)', paddingTop: 16 }}>
           <h3 style={{ margin: '8px 0' }}>Form Example</h3>
           <Form
             initialValues={{ username: '', agree: false, fruit: '', colors: [], newsletter: false }}

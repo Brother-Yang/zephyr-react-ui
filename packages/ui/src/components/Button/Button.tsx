@@ -8,6 +8,7 @@ export default function Button({
   size = 'medium',
   block = false,
   loading = false,
+  rounded = false,
   icon,
   children,
   className = '',
@@ -21,6 +22,7 @@ export default function Button({
     styles[`button-${variant}`],
     styles[`button-${size}`],
     block ? styles['button-block'] : '',
+    rounded ? styles['button-rounded'] : '',
     className
   ].filter(Boolean).join(' ');
 
@@ -38,4 +40,3 @@ export default function Button({
     </button>
   );
 }
-

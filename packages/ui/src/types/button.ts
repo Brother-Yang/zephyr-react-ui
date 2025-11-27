@@ -8,9 +8,9 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
   size?: ButtonSize;
   block?: boolean;
   loading?: boolean;
+  rounded?: boolean;
   icon?: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
   style?: React.CSSProperties;
 }
-
