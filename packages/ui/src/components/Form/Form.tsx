@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';
 import type { FormProps, FormItemProps, FormRule, FormApi } from '../../types/form';
-import styles from './Form.module.css';
+import './Form.css';
 import '../../styles/variables.css';
 import { withPrefix } from '../../config/classPrefix';
 
@@ -137,7 +137,7 @@ export default function Form<TValues extends AnyValues = AnyValues>({
     disabled,
   }), [values, errors, setFieldValue, getFieldValue, registerField, unregisterField, validateField, validateOnChange, validateOnBlur, layout, disabled]);
 
-  const classes = [styles[withPrefix('form')], layout === 'horizontal' ? styles[withPrefix('form-horizontal')] : '', disabled ? styles[withPrefix('disabled')] : '', className]
+  const classes = [withPrefix('form'), layout === 'horizontal' ? withPrefix('form-horizontal') : '', disabled ? withPrefix('form-disabled') : '', className]
     .filter(Boolean)
     .join(' ');
 
@@ -213,18 +213,18 @@ export function FormItem<TValues extends AnyValues = AnyValues>({
 
   const control = React.cloneElement(children, childProps);
 
-  const itemClasses = [styles[withPrefix('item')], error ? styles[withPrefix('has-error')] : '', className].filter(Boolean).join(' ');
+  const itemClasses = [withPrefix('form-item'), error ? withPrefix('form-has-error') : '', className].filter(Boolean).join(' ');
 
   return (
     <div ref={itemRef} className={itemClasses} style={style}>
       {label && (
-        <div className={styles[withPrefix('label')]}> 
+        <div className={withPrefix('form-label')}> 
           {label}
-          {required && <span className={styles[withPrefix('asterisk')]}>*</span>}
+          {required && <span className={withPrefix('form-asterisk')}>*</span>}
         </div>
       )}
-      <div className={styles[withPrefix('control')]}>{control}</div>
-      <div className={styles[withPrefix('help')]} id={helpId}>{error || help || null}</div>
+      <div className={withPrefix('form-control')}>{control}</div>
+      <div className={withPrefix('form-help')} id={helpId}>{error || help || null}</div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Empty.module.css';
+import './Empty.css';
 import '../../styles/variables.css';
 import { withPrefix } from '../../config/classPrefix';
 
@@ -14,12 +14,12 @@ export interface EmptyProps {
 }
 
 export default function Empty({ icon, description, actions, size = 'medium', className = '', style, children }: EmptyProps) {
-  const classes = [styles[withPrefix('empty')], styles[withPrefix(size)], className].filter(Boolean).join(' ');
+  const classes = [withPrefix('empty'), withPrefix(`empty-${size}`), className].filter(Boolean).join(' ');
   return (
     <div className={classes} style={style} role="status" aria-live="polite">
-      {icon && <div className={styles[withPrefix('icon')]} aria-hidden>{icon}</div>}
-      <div className={styles[withPrefix('text')]}>{children ?? description ?? 'Empty'}</div>
-      {actions && <div className={styles[withPrefix('actions')]}>{actions}</div>}
+      {icon && <div className={withPrefix('empty-icon')} aria-hidden>{icon}</div>}
+      <div className={withPrefix('empty-text')}>{children ?? description ?? 'Empty'}</div>
+      {actions && <div className={withPrefix('empty-actions')}>{actions}</div>}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ButtonProps } from '../../types/button';
-import styles from './Button.module.css';
+import './Button.css';
 import { withPrefix } from '../../config/classPrefix';
 import '../../styles/variables.css';
 
@@ -21,12 +21,12 @@ export default function Button({
   ...rest
 }: ButtonProps) {
   const classes = [
-    styles[withPrefix('button')],
-    styles[withPrefix(`button-${variant}`)],
-    styles[withPrefix(`button-${size}`)],
-    block ? styles[withPrefix('button-block')] : '',
-    rounded ? styles[withPrefix('button-rounded')] : '',
-    iconOnly ? styles[withPrefix('button-icon-only')] : '',
+    withPrefix('button'),
+    withPrefix(`button-${variant}`),
+    withPrefix(`button-${size}`),
+    block ? withPrefix('button-block') : '',
+    rounded ? withPrefix('button-rounded') : '',
+    iconOnly ? withPrefix('button-icon-only') : '',
     className
   ].filter(Boolean).join(' ');
 
@@ -41,7 +41,7 @@ export default function Button({
       type={type}
       {...rest}
     >
-      {loading && <span className={styles[withPrefix('button-spinner')]} aria-hidden />}
+      {loading && <span className={withPrefix('button-spinner')} aria-hidden />}
       {!loading && icon}
       {children}
     </button>

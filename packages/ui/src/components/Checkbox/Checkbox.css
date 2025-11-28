@@ -21,7 +21,7 @@
   box-shadow: 0 0 0 3px var(--color-primary-light);
 }
 
-.zephyr-input {
+.zephyr-checkbox-input {
   appearance: none;
   -webkit-appearance: none;
   width: 18px;
@@ -30,7 +30,7 @@
   cursor: pointer;
 }
 
-.zephyr-input:focus-visible { outline: none; }
+.zephyr-checkbox-input:focus-visible { outline: none; }
 
 .zephyr-checked {
   background-color: var(--color-primary);
@@ -52,6 +52,6 @@
 .zephyr-disabled { opacity: 0.6; cursor: not-allowed; }
 
 /* Sizes */
-.zephyr-checkbox-small .zephyr-box, .zephyr-checkbox-small .zephyr-input { width: 16px; height: 16px; }
-.zephyr-checkbox-medium .zephyr-box, .zephyr-checkbox-medium .zephyr-input { width: 18px; height: 18px; }
-.zephyr-checkbox-large .zephyr-box, .zephyr-checkbox-large .zephyr-input { width: 22px; height: 22px; }
+.zephyr-checkbox-small .zephyr-box, .zephyr-checkbox-small .zephyr-checkbox-input { width: 16px; height: 16px; }
+.zephyr-checkbox-medium .zephyr-box, .zephyr-checkbox-medium .zephyr-checkbox-input { width: 18px; height: 18px; }
+.zephyr-checkbox-large .zephyr-box, .zephyr-checkbox-large .zephyr-checkbox-input { width: 22px; height: 22px; }

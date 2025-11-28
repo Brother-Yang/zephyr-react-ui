@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from 'react';
 import type { InputProps } from '../../types/input';
-import styles from './Input.module.css';
+import './Input.css';
 import '../../styles/variables.css';
 import { useConfig } from '../../config';
 import { withPrefix } from '../../config/classPrefix';
@@ -29,10 +29,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   const inputValue = isControlled ? value! : internal;
 
   const wrapperClasses = [
-    styles[withPrefix('input-wrapper')],
-    styles[withPrefix(`input-${size}`)],
-    status !== 'default' ? styles[withPrefix(`status-${status}`)] : '',
-    disabled ? styles[withPrefix('disabled')] : '',
+    withPrefix('input-wrapper'),
+    withPrefix(`input-${size}`),
+    status !== 'default' ? withPrefix(`status-${status}`) : '',
+    disabled ? withPrefix('disabled') : '',
     className,
   ].filter(Boolean).join(' ');
 
@@ -53,9 +53,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 
   return (
     <div className={wrapperClasses} style={style}>
-      {prefix && <span className={styles[withPrefix('prefix')]}>{prefix}</span>}
+      {prefix && <span className={withPrefix('prefix')}>{prefix}</span>}
       <input
-        className={styles[withPrefix('input')]}
+        className={withPrefix('input-control')}
         ref={ref}
         value={inputValue}
         onChange={handleChange}
@@ -68,14 +68,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       {allowClear && inputValue && !disabled && (
         <button
           type="button"
-          className={styles[withPrefix('clear')]}
+          className={withPrefix('clear')}
           onClick={() => { if (!isControlled) setInternal(''); onChange?.(''); onClear?.(); }}
           aria-label={locale?.input?.clear ?? 'Clear'}
         >
           ×
         </button>
       )}
-      {suffix && <span className={styles[withPrefix('suffix')]}>{suffix}</span>}
+      {suffix && <span className={withPrefix('suffix')}>{suffix}</span>}
     </div>
   );
 });

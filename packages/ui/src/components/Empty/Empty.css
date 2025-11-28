@@ -1,0 +1,18 @@
+.zephyr-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  min-height: 80px;
+  text-align: center;
+}
+
+.zephyr-empty-icon { font-size: 24px; line-height: 1; }
+.zephyr-empty-text { font-size: var(--font-size-sm); }
+.zephyr-empty-actions { display: inline-flex; gap: var(--spacing-sm); }
+
+.zephyr-empty-small { min-height: 60px; }
+.zephyr-empty-medium { min-height: 80px; }
+.zephyr-empty-large { min-height: 120px; }

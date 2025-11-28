@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { RadioProps } from '../../types/radio';
-import styles from './Radio.module.css';
+import './Radio.css';
 import '../../styles/variables.css';
 import { withPrefix } from '../../config/classPrefix';
 
@@ -25,16 +25,16 @@ export default function Radio<T extends string | number = string | number>({
   const current = isControlled ? checked! : internal;
 
   const rootClasses = [
-    styles[withPrefix('radio')],
-    styles[withPrefix(size)],
-    disabled ? styles[withPrefix('disabled')] : '',
-    readOnly ? styles[withPrefix('readonly')] : '',
-    status ? styles[withPrefix(status)] : '',
+    withPrefix('radio'),
+    withPrefix(`radio-${size}`),
+    disabled ? withPrefix('radio-disabled') : '',
+    readOnly ? withPrefix('radio-readonly') : '',
+    status ? withPrefix(`radio-${status}`) : '',
     className
   ]
     .filter(Boolean)
     .join(' ');
-  const boxClasses = [styles[withPrefix('box')], current ? styles[withPrefix('checked')] : ''].filter(Boolean).join(' ');
+  const boxClasses = [withPrefix('radio-box'), current ? withPrefix('radio-checked') : ''].filter(Boolean).join(' ');
 
   const toggle = () => {
     if (disabled || readOnly) return;
@@ -57,7 +57,7 @@ export default function Radio<T extends string | number = string | number>({
       <span className={boxClasses}>
         <input
           type="radio"
-          className={styles[withPrefix('input')]}
+          className={withPrefix('radio-input')}
           checked={current}
           onChange={toggle}
           disabled={disabled}
@@ -66,9 +66,9 @@ export default function Radio<T extends string | number = string | number>({
           aria-setsize={ariaSetsize}
           {...rest}
         />
-        <span className={styles[withPrefix('dot')]} />
+        <span className={withPrefix('radio-dot')} />
       </span>
-      {label && <span className={styles[withPrefix('label')]}>{label}</span>}
+      {label && <span className={withPrefix('radio-label')}>{label}</span>}
     </label>
   );
 }

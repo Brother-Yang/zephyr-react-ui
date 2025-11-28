@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import type { RadioGroupProps } from '../../types/radio';
 import Radio from './Radio';
-import styles from './Radio.module.css';
+import './Radio.css';
+import { withPrefix } from '../../config/classPrefix';
 
 export default function RadioGroup<T extends string | number = string | number>({
   options,
@@ -22,7 +23,7 @@ export default function RadioGroup<T extends string | number = string | number>(
   const [internal, setInternal] = useState<T | undefined>(defaultValue);
   const current = isControlled ? value! : internal;
 
-  const classes = [styles.group, direction === 'vertical' ? styles.vertical : '', className].filter(Boolean).join(' ');
+  const classes = [withPrefix('radio-group'), direction === 'vertical' ? withPrefix('radio-vertical') : '', className].filter(Boolean).join(' ');
   const containerRef = React.useRef<HTMLDivElement | null>(null)
   const labelId = React.useRef(`radiogroup-${Math.random().toString(36).slice(2)}`)
 

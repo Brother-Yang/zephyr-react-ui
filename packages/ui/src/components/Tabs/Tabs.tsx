@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react';
 import type { TabsProps } from '../../types/tabs';
-import styles from './Tabs.module.css';
+import './Tabs.css';
 import '../../styles/variables.css';
 import { withPrefix } from '../../config/classPrefix';
 
@@ -23,9 +23,9 @@ export default function Tabs({
   const idRef = useRef(`tabs-${Math.random().toString(36).slice(2)}`);
 
   const rootClasses = [
-    styles[withPrefix('tabs')],
-    styles[withPrefix(`tabs-${size}`)],
-    bordered ? styles[withPrefix('bordered')] : '',
+    withPrefix('tabs'),
+    withPrefix(`tabs-${size}`),
+    bordered ? withPrefix('bordered') : '',
     className,
   ].filter(Boolean).join(' ');
 
@@ -65,7 +65,7 @@ export default function Tabs({
     <div className={rootClasses} style={style} {...rest}>
       <div
         id={`${idRef.current}-tablist`}
-        className={styles[withPrefix('nav')]}
+        className={withPrefix('nav')}
         role="tablist"
         aria-orientation="horizontal"
         onKeyDown={onKeyDown}
@@ -78,7 +78,7 @@ export default function Tabs({
             aria-selected={current === item.key}
             aria-disabled={!!item.disabled}
             aria-controls={`${idRef.current}-panel-${item.key}`}
-            className={`${styles[withPrefix('tab')]} ${current === item.key ? styles[withPrefix('active')] : ''} ${item.disabled ? styles[withPrefix('disabled')] : ''}`}
+            className={`${withPrefix('tab')} ${current === item.key ? withPrefix('active') : ''} ${item.disabled ? withPrefix('disabled') : ''}`}
             onClick={() => handleChange(item.key)}
             disabled={item.disabled}
             type="button"
@@ -88,7 +88,7 @@ export default function Tabs({
             })()}
           >
             {item.label}
-            {current === item.key && <span className={styles[withPrefix('ink')]} aria-hidden />}
+            {current === item.key && <span className={withPrefix('ink')} aria-hidden />}
           </button>
         ))}
       </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { SwitchProps } from '../../types/switch';
-import styles from './Switch.module.css';
+import './Switch.css';
 import '../../styles/variables.css';
 import { withPrefix } from '../../config/classPrefix';
 
@@ -26,16 +26,16 @@ export default function Switch({
   const current = isControlled ? checked! : internal;
 
   const rootClasses = [
-    styles[withPrefix('switch')],
-    styles[withPrefix(size)],
-    disabled ? styles[withPrefix('disabled')] : '',
-    readOnly ? styles[withPrefix('readonly')] : '',
-    status ? styles[withPrefix(status)] : '',
+    withPrefix('switch'),
+    withPrefix(`switch-${size}`),
+    disabled ? withPrefix('disabled') : '',
+    readOnly ? withPrefix('readonly') : '',
+    status ? withPrefix(status) : '',
     className
   ]
     .filter(Boolean)
     .join(' ');
-  const buttonClasses = [styles[withPrefix('button')], current ? styles[withPrefix('checked')] : ''].filter(Boolean).join(' ');
+  const buttonClasses = [withPrefix('switch-button'), current ? withPrefix('switch-checked') : ''].filter(Boolean).join(' ');
   const { onContent: _oc, offContent: _of, status: _st, readOnly: _ro, name: _nm, value: _val, label: _lb, ...btnProps } = rest as any;
 
   const toggle = () => {
@@ -65,9 +65,9 @@ export default function Switch({
         disabled={disabled}
         {...btnProps}
       >
-        <span className={styles[withPrefix('thumb')]} />
+        <span className={withPrefix('switch-thumb')} />
       </button>
-      {label && <span className={styles[withPrefix('label')]}>{label}</span>}
+      {label && <span className={withPrefix('switch-label')}>{label}</span>}
     </label>
   );
 }

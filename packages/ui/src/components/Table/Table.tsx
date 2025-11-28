@@ -7,7 +7,7 @@ import type {
   RowSelectionConfig,
   ExpandableConfig 
 } from '../../types/table';
-import styles from './Table.module.css';
+import './Table.css';
 import '../../styles/variables.css';
 import { Empty } from '../Empty';
 import { withPrefix } from '../../config/classPrefix';
@@ -180,10 +180,10 @@ function Table<T extends Record<string, any>>({
 
   // 渲染表头
   const renderHeader = () => (
-    <thead className={styles[withPrefix('table-header')]}> 
+    <thead className={withPrefix('table-header')}> 
       <tr>
         {rowSelection && rowSelection.type === 'checkbox' && (
-          <th className={styles[withPrefix('table-header-cell')]}> 
+          <th className={withPrefix('table-header-cell')}> 
             <input
               type={rowSelection.type === 'radio' ? 'radio' : 'checkbox'}
               ref={(el) => {
@@ -218,12 +218,12 @@ function Table<T extends Record<string, any>>({
             />
           </th>
         )}
-        {expandable && <th className={styles[withPrefix('table-header-cell')]}></th>}
+        {expandable && <th className={withPrefix('table-header-cell')}></th>}
         {columns.map((column) => (
           <th
             key={String(column.key)}
-            className={`${styles[withPrefix('table-header-cell')]} ${column.sortable ? styles[withPrefix('sortable')] : ''} ${
-              sortField === column.key ? (sortOrder === 'asc' ? styles[withPrefix('asc')] : styles[withPrefix('desc')]) : ''
+            className={`${withPrefix('table-header-cell')} ${column.sortable ? withPrefix('sortable') : ''} ${
+              sortField === column.key ? (sortOrder === 'asc' ? withPrefix('asc') : withPrefix('desc')) : ''
             }`}
             style={{ width: column.width }}
             onClick={() => handleSort(column)}
@@ -245,13 +245,13 @@ function Table<T extends Record<string, any>>({
     return (
       <React.Fragment key={key}>
         <tr
-          className={`${styles[withPrefix('table-row')]} ${striped ? styles[withPrefix('striped')] : ''} ${
-            isSelected ? styles[withPrefix('selected')] : ''
+          className={`${withPrefix('table-row')} ${striped ? withPrefix('striped') : ''} ${
+            isSelected ? withPrefix('selected') : ''
           }`}
           onClick={() => onRowClick?.(record, index)}
         >
           {rowSelection && (
-            <td className={styles[withPrefix('table-cell')]}> 
+            <td className={withPrefix('table-cell')}> 
               <input
                 type={rowSelection.type === 'radio' ? 'radio' : 'checkbox'}
                 checked={isSelected}
@@ -261,7 +261,7 @@ function Table<T extends Record<string, any>>({
             </td>
           )}
           {expandable && (
-            <td className={styles[withPrefix('table-cell')]}> 
+            <td className={withPrefix('table-cell')}> 
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -282,7 +282,7 @@ function Table<T extends Record<string, any>>({
             </td>
           )}
           {columns.map((column) => (
-            <td key={String(column.key)} className={styles[withPrefix('table-cell')]}> 
+            <td key={String(column.key)} className={withPrefix('table-cell')}> 
               {column.render
                 ? column.render(record[column.key], record, index)
                 : String(record[column.key] ?? '')}
@@ -292,7 +292,7 @@ function Table<T extends Record<string, any>>({
         {expandable && isExpanded && (
           <tr>
             <td colSpan={columns.length + (rowSelection ? 1 : 0) + (expandable ? 1 : 0)} 
-                className={styles[withPrefix('table-cell')]}> 
+                className={withPrefix('table-cell')}> 
               {expandable.expandedRowRender(record)}
             </td>
           </tr>
@@ -311,9 +311,9 @@ function Table<T extends Record<string, any>>({
     const pageSizeOptions = pagination.pageSizeOptions || [10, 20, 50, 100];
 
     return (
-      <div className={styles[withPrefix('pagination')]}> 
+      <div className={withPrefix('pagination')}> 
         <button
-          className={`${styles[withPrefix('pagination-item')]} ${currentPage === 1 ? styles[withPrefix('disabled')] : ''}`}
+          className={`${withPrefix('pagination-item')} ${currentPage === 1 ? withPrefix('disabled') : ''}`}
           onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
@@ -335,7 +335,7 @@ function Table<T extends Record<string, any>>({
           return (
           <button
             key={pageNum}
-            className={`${styles[withPrefix('pagination-item')]} ${currentPage === pageNum ? styles[withPrefix('active')] : ''}`}
+            className={`${withPrefix('pagination-item')} ${currentPage === pageNum ? withPrefix('active') : ''}`}
             onClick={() => handlePageChange(pageNum)}
           >
             {pageNum}
@@ -344,7 +344,7 @@ function Table<T extends Record<string, any>>({
         })}
         
         <button
-          className={`${styles[withPrefix('pagination-item')]} ${currentPage === totalPages ? styles[withPrefix('disabled')] : ''}`}
+          className={`${withPrefix('pagination-item')} ${currentPage === totalPages ? withPrefix('disabled') : ''}`}
           onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
@@ -353,7 +353,7 @@ function Table<T extends Record<string, any>>({
         
         {showSizeChanger && (
           <select
-            className={styles[withPrefix('pagination-item')]}
+            className={withPrefix('pagination-item')}
             value={pageSize}
             onChange={(e) => handlePageChange(1, Number(e.target.value))}
           >
@@ -364,7 +364,7 @@ function Table<T extends Record<string, any>>({
         )}
         
         {pagination.showTotal && (
-          <span className={styles[withPrefix('pagination-item')]} style={{ cursor: 'default' }}>
+          <span className={withPrefix('pagination-item')} style={{ cursor: 'default' }}>
             {total} {locale.table.pagination.items}
           </span>
         )}
@@ -372,20 +372,20 @@ function Table<T extends Record<string, any>>({
     );
   };
 
-  const tableClasses = `${styles[withPrefix('table')]} ${styles[withPrefix(`table-${size}`)]} ${
-    bordered ? styles[withPrefix('table-bordered')] : ''
-  } ${loading ? styles[withPrefix('table-loading')] : ''} ${className}`.trim();
+  const tableClasses = `${withPrefix('table')} ${withPrefix(`table-${size}`)} ${
+    bordered ? withPrefix('table-bordered') : ''
+  } ${loading ? withPrefix('table-loading') : ''} ${className}`.trim();
 
   return (
     <div style={style}>
       <table className={tableClasses}>
         {renderHeader()}
-        <tbody className={styles[withPrefix('table-body')]}> 
+        <tbody className={withPrefix('table-body')}> 
           {loading && (
             <tr>
               <td colSpan={columns.length + (rowSelection ? 1 : 0) + (expandable ? 1 : 0)} 
                   style={{ textAlign: 'center', padding: '40px' }}>
-                <div className={styles[withPrefix('loading-spinner')]}></div>
+                <div className={withPrefix('loading-spinner')}></div>
               </td>
             </tr>
           )}
