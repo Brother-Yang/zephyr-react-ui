@@ -4,6 +4,7 @@ import {
   enUS,
   zhCN,
   Button,
+  Modal,
   Input,
   Checkbox,
   CheckboxGroup,
@@ -69,6 +70,19 @@ export default function App() {
   const [dpSingle, setDpSingle] = useState<Date | null>(null);
   const [dpRange, setDpRange] = useState<[Date, Date] | null>(null);
   const [rateValue, setRateValue] = useState<number>(2.5);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalBasic, setModalBasic] = useState(false);
+  const [modalCentered, setModalCentered] = useState(false);
+  const [modalCustomFooter, setModalCustomFooter] = useState(false);
+  const [modalNoFooter, setModalNoFooter] = useState(false);
+  const [modalMaskFalse, setModalMaskFalse] = useState(false);
+  const [modalKeyboardFalse, setModalKeyboardFalse] = useState(false);
+  const [modalDestroyOnHidden, setModalDestroyOnHidden] = useState(false);
+  const [modalLarge, setModalLarge] = useState(false);
+  const [modalCloseIcon, setModalCloseIcon] = useState(false);
+  const [modalHighZ, setModalHighZ] = useState(false);
+  const [modalLoadingOpen, setModalLoadingOpen] = useState(false);
+  const [okLoading, setOkLoading] = useState(false);
   
 
   return (
@@ -402,8 +416,20 @@ export default function App() {
               <Button rounded>Rounded</Button>
               <Button type="button">Type Button</Button>
               <Button type="reset" variant="secondary">Type Reset</Button>
+              <Button onClick={() => setModalOpen(true)}>Open Modal</Button>
             </div>
           </div>
+          <Modal
+            open={modalOpen}
+            title="确认操作"
+            onCancel={() => setModalOpen(false)}
+            onOk={() => {
+              setModalOpen(false)
+            }}
+            centered
+          >
+            <div style={{ color: 'var(--dui-text-secondary)' }}>这是一个示例弹窗内容。</div>
+          </Modal>
         </div>
 
         <div style={{ borderTop: '1px solid var(--dui-border)', paddingTop: 16 }}>
@@ -716,6 +742,17 @@ export default function App() {
                 ]}
               />
             </div>
+            <div>
+              <h4 style={{ margin: '4px 0' }}>Status</h4>
+              <Timeline
+                orientation="horizontal"
+                items={[
+                  { key: 'ts1', content: 'Deploy', status: 'success' },
+                  { key: 'ts2', content: 'Metrics warning', status: 'warning' },
+                  { key: 'ts3', content: 'Error event', status: 'error' }
+                ]}
+              />
+            </div>
           </div>
         </div>
 
@@ -728,6 +765,138 @@ export default function App() {
             <Tooltip title="Right tip" placement="right"><Button>Right</Button></Tooltip>
             <Tooltip title={<span>Rich tip ✨</span>} placement="top"><span style={{ padding: 8, border: '1px solid var(--dui-border)', borderRadius: 6 }}>Hover me</span></Tooltip>
           </div>
+        </div>
+
+        <div style={{ borderTop: '1px solid var(--dui-border)', paddingTop: 16 }}>
+          <h3 style={{ margin: '8px 0' }}>Modal Examples</h3>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+            <Button onClick={() => setModalBasic(true)}>Basic</Button>
+            <Button onClick={() => setModalCentered(true)}>Centered</Button>
+            <Button onClick={() => setModalCustomFooter(true)}>Custom Footer</Button>
+            <Button onClick={() => setModalNoFooter(true)}>No Footer</Button>
+            <Button onClick={() => setModalMaskFalse(true)}>Mask Not Closable</Button>
+            <Button onClick={() => setModalKeyboardFalse(true)}>Keyboard Off</Button>
+            <Button onClick={() => setModalDestroyOnHidden(true)}>Destroy On Hidden</Button>
+            <Button onClick={() => setModalLarge(true)}>Width 720</Button>
+            <Button onClick={() => setModalCloseIcon(true)}>Custom Close Icon</Button>
+            <Button onClick={() => setModalHighZ(true)}>High zIndex</Button>
+            <Button onClick={() => { setOkLoading(false); setModalLoadingOpen(true); }}>Confirm Loading</Button>
+          </div>
+
+          <Modal
+            open={modalBasic}
+            title="基础弹窗"
+            onCancel={() => setModalBasic(false)}
+            onOk={() => setModalBasic(false)}
+          >
+            <div style={{ color: 'var(--dui-text-secondary)' }}>这是一个基础弹窗。</div>
+          </Modal>
+
+          <Modal
+            open={modalCentered}
+            title="垂直居中"
+            centered
+            onCancel={() => setModalCentered(false)}
+            onOk={() => setModalCentered(false)}
+          >
+            <div style={{ color: 'var(--dui-text-secondary)' }}>弹窗垂直居中显示。</div>
+          </Modal>
+
+          <Modal
+            open={modalCustomFooter}
+            title="自定义底部"
+            footer={
+              <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+                <Button variant="secondary" onClick={() => setModalCustomFooter(false)}>取消</Button>
+                <Button onClick={() => setModalCustomFooter(false)}>确定</Button>
+              </div>
+            }
+            onCancel={() => setModalCustomFooter(false)}
+          >
+            <div style={{ color: 'var(--dui-text-secondary)' }}>底部按钮自定义。</div>
+          </Modal>
+
+          <Modal
+            open={modalNoFooter}
+            title="隐藏底部"
+            footer={null}
+            onCancel={() => setModalNoFooter(false)}
+          >
+            <div style={{ color: 'var(--dui-text-secondary)' }}>不显示底部区域。</div>
+          </Modal>
+
+          <Modal
+            open={modalMaskFalse}
+            title="遮罩不可关闭"
+            maskClosable={false}
+            onCancel={() => setModalMaskFalse(false)}
+            onOk={() => setModalMaskFalse(false)}
+          >
+            <div style={{ color: 'var(--dui-text-secondary)' }}>点击遮罩不会关闭。</div>
+          </Modal>
+
+          <Modal
+            open={modalKeyboardFalse}
+            title="禁用键盘关闭"
+            keyboard={false}
+            onCancel={() => setModalKeyboardFalse(false)}
+            onOk={() => setModalKeyboardFalse(false)}
+          >
+            <div style={{ color: 'var(--dui-text-secondary)' }}>按 Esc 不会关闭。</div>
+          </Modal>
+
+          <Modal
+            open={modalDestroyOnHidden}
+            title="关闭销毁子元素"
+            destroyOnHidden
+            onCancel={() => setModalDestroyOnHidden(false)}
+            onOk={() => setModalDestroyOnHidden(false)}
+          >
+            <Input placeholder="关闭后再次打开将重置内容" />
+          </Modal>
+
+          <Modal
+            open={modalLarge}
+            title="宽度 720"
+            width={720}
+            onCancel={() => setModalLarge(false)}
+            onOk={() => setModalLarge(false)}
+          >
+            <div style={{ color: 'var(--dui-text-secondary)' }}>更大的对话框宽度。</div>
+          </Modal>
+
+          <Modal
+            open={modalCloseIcon}
+            title="自定义关闭图标"
+            closeIcon={<span>✖️</span>}
+            onCancel={() => setModalCloseIcon(false)}
+            onOk={() => setModalCloseIcon(false)}
+          >
+            <div style={{ color: 'var(--dui-text-secondary)' }}>右上角图标自定义。</div>
+          </Modal>
+
+          <Modal
+            open={modalHighZ}
+            title="高 zIndex"
+            zIndex={2000}
+            onCancel={() => setModalHighZ(false)}
+            onOk={() => setModalHighZ(false)}
+          >
+            <div style={{ color: 'var(--dui-text-secondary)' }}>更高的层级覆盖。</div>
+          </Modal>
+
+          <Modal
+            open={modalLoadingOpen}
+            title="确定加载"
+            confirmLoading={okLoading}
+            onCancel={() => { setModalLoadingOpen(false); setOkLoading(false); }}
+            onOk={() => {
+              setOkLoading(true)
+              setTimeout(() => { setOkLoading(false); setModalLoadingOpen(false) }, 1000)
+            }}
+          >
+            <div style={{ color: 'var(--dui-text-secondary)' }}>点击确定后显示加载并延迟关闭。</div>
+          </Modal>
         </div>
 
         <div style={{ borderTop: '1px solid var(--dui-border)', paddingTop: 16 }}>

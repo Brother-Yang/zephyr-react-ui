@@ -16,3 +16,4 @@ export { Table } from './components/Table';
 export { Tabs } from './components/Tabs';
 export { Empty } from './components/Empty';
 export { setClassPrefix, getClassPrefix, withPrefix } from './config/classPrefix';
+export { Modal } from './components/Modal';

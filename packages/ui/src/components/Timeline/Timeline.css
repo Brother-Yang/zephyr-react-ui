@@ -7,15 +7,18 @@
 .zephyr-timeline-vertical .zephyr-timeline-line { position: absolute; left: 4px; top: 18px; width: 2px; height: calc(100% - 18px + var(--timeline-gap) + 6px); background: var(--color-border); }
 
 /* Horizontal layout */
-.zephyr-timeline-horizontal { --timeline-gap: var(--spacing-lg); display: flex; gap: var(--timeline-gap); align-items: flex-start; }
-.zephyr-timeline-horizontal .zephyr-timeline-item { position: relative; padding-top: calc(var(--spacing-md) + 8px); min-width: 80px; }
+.zephyr-timeline-horizontal { --timeline-gap: var(--spacing-lg); display: flex; gap: var(--timeline-gap); align-items: center; }
+.zephyr-timeline-horizontal .zephyr-timeline-item { position: relative; padding-top: calc(var(--spacing-md) + 8px); min-width: 80px; display: grid; justify-items: center; }
 .zephyr-timeline-horizontal .zephyr-timeline-dot { position: absolute; left: calc(50% - 5px); top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-border); }
-.zephyr-timeline-horizontal .zephyr-timeline-line { position: absolute; top: 14px; left: calc(50% + 5px); height: 2px; width: calc(var(--timeline-gap) + 40px); background: var(--color-border); }
+.zephyr-timeline-horizontal .zephyr-timeline-line-left { position: absolute; top: 11px; height: 2px; left: calc(-1 * (var(--timeline-gap) / 2)); width: calc(50% + (var(--timeline-gap) / 2) - 5px); background: var(--color-border); }
+.zephyr-timeline-horizontal .zephyr-timeline-line-right { position: absolute; top: 11px; height: 2px; left: calc(50% + 5px); width: calc(50% + (var(--timeline-gap) / 2) - 5px); background: var(--color-border); }
 .zephyr-timeline-horizontal .zephyr-timeline-label { text-align: center; }
 .zephyr-timeline-horizontal .zephyr-timeline-content { text-align: center; }
 
 .zephyr-timeline-label { color: var(--color-text-secondary); font-size: var(--font-size-xs); margin-bottom: var(--spacing-xs); }
-.zephyr-timeline-content { color: var(--color-text); }
+.zephyr-timeline-content { color: var(--color-text); position: relative; z-index: 1; }
+.zephyr-timeline-horizontal .zephyr-timeline-label { position: relative; z-index: 1; }
+.zephyr-timeline-horizontal .zephyr-timeline-line-left, .zephyr-timeline-horizontal .zephyr-timeline-line-right { z-index: 0; }
 .zephyr-timeline-success .zephyr-timeline-dot { background: var(--color-success); }
 .zephyr-timeline-warning .zephyr-timeline-dot { background: var(--color-warning); }
 .zephyr-timeline-error .zephyr-timeline-dot { background: var(--color-error); }
