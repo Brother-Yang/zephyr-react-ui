@@ -1,0 +1,17 @@
+.zephyr-progress { display: inline-flex; align-items: center; gap: 8px; color: var(--color-text); }
+.zephyr-progress-body { position: relative; display: inline-block; }
+.zephyr-progress-indicator { font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+
+.zephyr-progress-line .zephyr-progress-body { width: 200px; height: 8px; }
+.zephyr-progress-line .zephyr-progress-rail { position: absolute; inset: 0; background: rgba(0,0,0,0.06); border-radius: 100px; }
+.zephyr-progress-line .zephyr-progress-track { position: absolute; inset: 0; height: 100%; background: var(--color-primary); border-radius: 100px; transition: width var(--transition-medium); }
+.zephyr-progress-line .zephyr-progress-steps { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 2px; height: 100%; }
+.zephyr-progress-line .zephyr-progress-step { display: block; height: 100%; border-radius: 2px; }
+
+.zephyr-progress-success .zephyr-progress-track { background: var(--color-success); }
+.zephyr-progress-exception .zephyr-progress-track { background: var(--color-error); }
+.zephyr-progress-active .zephyr-progress-track { background-image: linear-gradient(90deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%, transparent); background-size: 20px 100%; }
+
+.zephyr-progress-circle, .zephyr-progress-dashboard { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.zephyr-progress-circle .zephyr-progress-indicator, .zephyr-progress-dashboard .zephyr-progress-indicator { position: absolute; font-size: var(--font-size-sm); }
+

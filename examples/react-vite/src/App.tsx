@@ -21,7 +21,8 @@ import {
   Collapse,
   Timeline,
   Tooltip,
-  Rate
+  Rate,
+  Progress
 } from '@zephyr-ui/ui';
 
 export default function App() {
@@ -753,6 +754,23 @@ export default function App() {
                 ]}
               />
             </div>
+          </div>
+        </div>
+
+        <div style={{ borderTop: '1px solid var(--dui-border)', paddingTop: 16 }}>
+          <h3 style={{ margin: '8px 0' }}>Progress Examples</h3>
+          <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+            <Progress type="line" percent={30} />
+            <Progress type="line" percent={50} status="active" />
+            <Progress type="line" percent={60} status="success" />
+            <Progress type="line" percent={60} status="exception" />
+            <Progress type="line" percent={60} showInfo={false} />
+            <Progress type="line" percent={60} steps={10} />
+          </div>
+          <div style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap', marginTop: 12 }}>
+            <Progress type="circle" percent={75} />
+            <Progress type="dashboard" percent={60} />
+            <Progress type="circle" percent={90} format={(p) => `${p}% Done`} />
           </div>
         </div>
 

@@ -1,3 +1,3 @@
 export { default } from './Collapse'
-export type { CollapseProps, CollapseItem } from './Collapse'
+export type { CollapseProps, CollapseItem } from '../../types/collapse'
 
