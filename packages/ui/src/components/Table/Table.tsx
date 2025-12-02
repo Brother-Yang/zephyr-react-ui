@@ -176,7 +176,8 @@ function Table<T extends Record<string, any>>({
   const renderHeader = () => (
     <thead className={withPrefix('table-header')}> 
       <tr>
-        {rowSelection && rowSelection.type === 'checkbox' && (
+        {rowSelection && (
+          rowSelection.type === 'checkbox' ? (
           <th className={withPrefix('table-header-cell')}> 
             <input
               type="checkbox"
@@ -211,6 +212,9 @@ function Table<T extends Record<string, any>>({
               }}
             />
           </th>
+          ) : (
+            <th className={withPrefix('table-header-cell')}></th>
+          )
         )}
         {expandable && <th className={withPrefix('table-header-cell')}></th>}
         {columns.map((column) => (
