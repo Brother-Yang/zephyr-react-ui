@@ -1546,12 +1546,12 @@ const [okLoading, setOkLoading] = useState(false);
         title: '单选（受控）',
         description: 'mode="single" 受控值',
         code: `const [val,setVal]=useState<Date|null>(null)
-<DatePicker mode="single" value={val} onChange={setVal} placeholder="选择日期" />`,
+<DatePicker mode="single" value={val} onChange={setVal} placeholder="选择日期" getPopupContainer={()=>document.body} />`,
         component: () => {
           const [val,setVal]=useState<Date|null>(null)
           return (
             <div>
-              <DatePicker mode="single" value={val} onChange={setVal} placeholder="选择日期" />
+              <DatePicker mode="single" value={val} onChange={setVal} placeholder="选择日期" getPopupContainer={() => document.body} />
               <div style={{ marginTop: 8 }}>Selected: {val ? val.toLocaleDateString() : 'None'}</div>
             </div>
           )
@@ -1561,12 +1561,12 @@ const [okLoading, setOkLoading] = useState(false);
         title: '范围（受控）',
         description: 'mode="range" 受控范围',
         code: `const [rng,setRng]=useState<[Date,Date]|null>(null)
-<DatePicker mode="range" value={rng} onChange={setRng} placeholder="选择日期范围" />`,
+<DatePicker mode="range" value={rng} onChange={setRng} placeholder="选择日期范围" getPopupContainer={()=>document.body} />`,
         component: () => {
           const [rng,setRng]=useState<[Date,Date]|null>(null)
           return (
             <div>
-              <DatePicker mode="range" value={rng} onChange={setRng} placeholder="选择日期范围" />
+              <DatePicker mode="range" value={rng} onChange={setRng} placeholder="选择日期范围" getPopupContainer={() => document.body} />
               <div style={{ marginTop: 8 }}>Selected: {rng && rng[0] && rng[1] ? `${rng[0].toLocaleDateString()} ~ ${rng[1].toLocaleDateString()}` : 'None'}</div>
             </div>
           )
@@ -1575,17 +1575,17 @@ const [okLoading, setOkLoading] = useState(false);
       {
         title: '禁用过去日期',
         description: 'disabledDate 控制可选范围',
-        code: `<DatePicker mode="single" disabledDate={(d)=> d < new Date(new Date().setHours(0,0,0,0))} placeholder="不可选择过去日期" />`,
+        code: `<DatePicker mode="single" disabledDate={(d)=> d < new Date(new Date().setHours(0,0,0,0))} placeholder="不可选择过去日期" getPopupContainer={()=>document.body} />`,
         component: () => (
-          <DatePicker mode="single" disabledDate={(d)=> d < new Date(new Date().setHours(0,0,0,0))} placeholder="不可选择过去日期" />
+          <DatePicker mode="single" disabledDate={(d)=> d < new Date(new Date().setHours(0,0,0,0))} placeholder="不可选择过去日期" getPopupContainer={() => document.body} />
         )
       },
       {
         title: '默认月份与样式变量',
         description: 'defaultMonth 与 cssVariables 自定义',
-        code: `<DatePicker defaultMonth={new Date(2025,0,1)} cssVariables={{ '--cal-primary-color': '#7c3aed' }} />`,
+        code: `<DatePicker defaultMonth={new Date(2025,0,1)} cssVariables={{ '--cal-primary-color': '#7c3aed' }} getPopupContainer={()=>document.body} />`,
         component: () => (
-          <DatePicker defaultMonth={new Date(2025,0,1)} cssVariables={{ '--cal-primary-color': '#7c3aed', '--cal-primary-hover': '#6d28d9' }} />
+          <DatePicker defaultMonth={new Date(2025,0,1)} cssVariables={{ '--cal-primary-color': '#7c3aed', '--cal-primary-hover': '#6d28d9' }} getPopupContainer={() => document.body} />
         )
       }
     ],

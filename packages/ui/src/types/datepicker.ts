@@ -12,6 +12,7 @@ export interface DatePickerProps {
   disabled?: boolean
   format?: (value: Date | [Date, Date] | null) => string
   className?: string
+  getPopupContainer?: () => HTMLElement
 }
 
 export interface CalendarDay {

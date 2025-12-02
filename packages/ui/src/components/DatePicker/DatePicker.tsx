@@ -3,6 +3,7 @@ import './DatePicker.css';
 import { withPrefix } from '../../config/classPrefix';
 import type { DatePickerProps, CalendarDay, CalendarState } from '../../types/datepicker';
 import { useConfig } from '../../config';
+import ReactDOM from 'react-dom';
 
 const DatePicker: React.FC<DatePickerProps> = ({
   mode = 'single',
@@ -15,7 +16,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
   cssVariables,
   placeholder,
   disabled = false,
-  format
+  format,
+  getPopupContainer
 }) => {
   const [state, setState] = useState<CalendarState>({
     currentMonth: defaultMonth,
@@ -198,6 +200,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
 
   const [open, setOpen] = useState(false);
   const rootRef = React.useRef<HTMLDivElement | null>(null);
+  const [panelPos, setPanelPos] = useState<{ top: number; left: number; width: number } | null>(null);
 
   React.useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
@@ -227,33 +230,39 @@ const DatePicker: React.FC<DatePickerProps> = ({
     return fmt(state.selectedValue as Date);
   }, [state.selectedValue, format]);
 
-  return (
-    <div className={`${withPrefix('datepicker-picker')} ${className}`} style={containerStyle} ref={rootRef}>
-      <div
-        className={withPrefix('datepicker-input')}
-        role="combobox"
-        aria-expanded={open}
-        aria-haspopup="dialog"
-        tabIndex={disabled ? -1 : 0}
-        onMouseDown={(e) => { if (disabled) return; e.stopPropagation(); setOpen(o => !o); }}
-        onFocus={() => !disabled && setOpen(true)}
-      >
-        <span className={withPrefix('datepicker-input-text')}>
-          {formatted || (placeholder ?? (mode === 'range' ? (dp?.placeholderRange) : (dp?.placeholderSingle)))}
-        </span>
-        <button
-          type="button"
-          className={withPrefix('datepicker-caret')}
-          aria-label={open ? (dp?.closeAriaLabel) : (dp?.openAriaLabel)}
-          onMouseDown={(e) => { e.stopPropagation(); if (!disabled) setOpen(o => !o); }}
-          disabled={disabled}
-        >
-          ▾
-        </button>
-      </div>
+  const updatePanelPosition = React.useCallback(() => {
+    if (!rootRef.current) return;
+    const rect = rootRef.current.getBoundingClientRect();
+    setPanelPos({ top: Math.round(rect.bottom + 8), left: Math.round(rect.left), width: Math.round(rect.width) });
+  }, []);
 
-      {open && (
-      <div className={withPrefix('datepicker-panel')} role="dialog" aria-modal={false} onMouseDown={(e) => e.stopPropagation()}>
+  React.useEffect(() => {
+    if (open) {
+      updatePanelPosition();
+    }
+  }, [open, updatePanelPosition]);
+
+  React.useEffect(() => {
+    if (!open) return;
+    const onScroll = () => updatePanelPosition();
+    const onResize = () => updatePanelPosition();
+    window.addEventListener('scroll', onScroll, true);
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('scroll', onScroll, true);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [open, updatePanelPosition]);
+
+  const panelElement = (
+      <div
+        className={withPrefix('datepicker-panel')}
+        role="dialog"
+        aria-modal={false}
+        onMouseDown={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
+        style={getPopupContainer && panelPos ? { position: 'fixed', top: panelPos.top, left: panelPos.left, minWidth: Math.max(panelPos.width, 280), zIndex: 1000 } : undefined}
+      >
         <div className={withPrefix('datepicker-header')}>
           <button className={withPrefix('datepicker-nav-button')} onClick={() => handleMonthChange('prev')} aria-label={dp?.prevMonth}>‹</button>
           <div className={withPrefix('datepicker-title')}>
@@ -300,9 +309,46 @@ const DatePicker: React.FC<DatePickerProps> = ({
           ))}
         </div>
       </div>
-      )}
+  );
+
+  const rootNode = (
+    <div className={`${withPrefix('datepicker-picker')} ${className}`} style={containerStyle} ref={rootRef}>
+      <div
+        className={withPrefix('datepicker-input')}
+        role="combobox"
+        aria-expanded={open}
+        aria-haspopup="dialog"
+        tabIndex={disabled ? -1 : 0}
+        onMouseDown={(e) => { if (disabled) return; e.stopPropagation(); setOpen(o => !o); }}
+        onFocus={() => !disabled && setOpen(true)}
+      >
+        <span className={withPrefix('datepicker-input-text')}>
+          {formatted || (placeholder ?? (mode === 'range' ? (dp?.placeholderRange) : (dp?.placeholderSingle)))}
+        </span>
+        <button
+          type="button"
+          className={withPrefix('datepicker-caret')}
+          aria-label={open ? (dp?.closeAriaLabel) : (dp?.openAriaLabel)}
+          onMouseDown={(e) => { e.stopPropagation(); if (!disabled) setOpen(o => !o); }}
+          disabled={disabled}
+        >
+          ▾
+        </button>
+      </div>
+
+      {open && (!getPopupContainer) && panelElement}
     </div>
   );
+
+  if (open && getPopupContainer && panelPos) {
+    const container = getPopupContainer();
+    return <>
+      {rootNode}
+      {ReactDOM.createPortal(panelElement, container)}
+    </>;
+  }
+
+  return rootNode;
 };
 
 export default DatePicker;
