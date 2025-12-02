@@ -5,13 +5,14 @@
   "type": "module",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
   "vitest": {
     "setupFiles": ["./vitest.setup.ts"]
   },
   "files": [
     "dist",
-    "style.css"
+    "style.css",
+    "index.d.ts"
   ],
   "scripts": {
     "build": "vite build",
