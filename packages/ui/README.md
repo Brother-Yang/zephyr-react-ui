@@ -1,11 +1,11 @@
 # Zephyr UI
 
-官网: https://9b290a27.pinit.eth.limo
+Website: https://9b290a27.pinit.eth.limo
 
-下一代超轻量、性能炸裂的 React 组件库：一行引入、即刻上手。覆盖表单、数据展示、反馈与导航全场景，内置暗黑主题与国际化，开箱即用。
-从 Button/Input/Select/Form 到 Table/Tabs/Timeline/Tree，再到 Modal/Drawer/Tooltip/Progress/DatePicker，一套搞定常用组件；可访问性与键盘交互、受控/非受控、半选级联、动画过渡等细节全部到位。设计令牌驱动、类名前缀可定制、零外部依赖、TypeScript 全量类型与单测护航，助你从 MVP 直抵企业级交付。
+Next-generation, ultra-lightweight, high-performance React component library: import with one line and start instantly. It covers forms, data display, feedback, and navigation scenarios, with built-in dark theme and internationalization, ready out of the box.
+From Button/Input/Select/Form to Table/Tabs/Timeline/Tree, and Modal/Drawer/Tooltip/Progress/DatePicker, one suite covers common components. Accessibility and keyboard interactions, controlled/uncontrolled modes, half-checked cascading, transition animations and other details are all in place. Design token–driven, customizable class name prefix, zero external dependencies, full TypeScript types and unit tests — helping you deliver from MVP to enterprise-grade.
 
-## 安装与使用
+## Installation & Usage
 
 ```bash
 pnpm add zephyr-react-ui react react-dom
@@ -47,22 +47,22 @@ export default function App() {
 }
 ```
 
-## 组件一览
+## Components
 
-- 基础：`Button`、`Empty`、`Tooltip`
-- 表单：`Input`、`Checkbox`/`CheckboxGroup`、`Radio`/`RadioGroup`、`Select`、`Switch`、`Form`/`FormItem`、`DatePicker`
-- 数据展示：`Table`、`Tabs`、`Collapse`、`Timeline`、`Rate`、`Progress`、`Tree`
-- 反馈：`Modal`、`Drawer`
+- Basics: `Button`, `Empty`, `Tooltip`
+- Forms: `Input`, `Checkbox`/`CheckboxGroup`, `Radio`/`RadioGroup`, `Select`, `Switch`, `Form`/`FormItem`, `DatePicker`
+- Data Display: `Table`, `Tabs`, `Collapse`, `Timeline`, `Rate`, `Progress`, `Tree`
+- Feedback: `Modal`, `Drawer`
 
-组件入口位于 `packages/ui/src/components`，统一从包根 `zephyr-react-ui` 导出。
+Component entries are located in `packages/ui/src/components` and are exported from the package root `zephyr-react-ui`.
 
-## 配置与主题
+## Configuration & Theme
 
-`ConfigProvider` 提供主题/本地化/类名前缀：
+`ConfigProvider` offers theme, localization, and class name prefix:
 
-- `theme`：`light | dark | system`
-- `locale`：内置 `enUS`、`zhCN`，可部分覆写
-- `classPrefix`：设置全局类名前缀（默认 `zephyr-`）
+- `theme`: `light | dark | system`
+- `locale`: built-in `enUS`, `zhCN`, and partially overridable
+- `classPrefix`: set a global class name prefix (default `zephyr-`)
 
 ```tsx
 import { ConfigProvider, zhCN } from 'zephyr-react-ui'
@@ -72,9 +72,9 @@ import { ConfigProvider, zhCN } from 'zephyr-react-ui'
 </ConfigProvider>
 ```
 
-## 使用示例
+## Examples
 
-### Modal 对话框
+### Modal Dialog
 
 ```tsx
 import { Modal, Button } from 'zephyr-react-ui'
@@ -86,20 +86,20 @@ function Demo() {
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Modal
         open={open}
-        title="标题"
+        title="Title"
         onCancel={() => setOpen(false)}
         onOk={() => setOpen(false)}
         centered
         confirmLoading={false}
       >
-        内容区域
+        Content area
       </Modal>
     </>
   )
 }
 ```
 
-### Drawer 抽屉
+### Drawer
 
 ```tsx
 import { Drawer, Button } from 'zephyr-react-ui'
@@ -109,15 +109,15 @@ function Demo() {
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open</Button>
-      <Drawer open={open} onClose={() => setOpen(false)} title="标题" placement="right" width={360}>
-        抽屉内容
+      <Drawer open={open} onClose={() => setOpen(false)} title="Title" placement="right" width={360}>
+        Drawer content
       </Drawer>
     </>
   )
 }
 ```
 
-### Progress 进度条
+### Progress
 
 ```tsx
 import { Progress } from 'zephyr-react-ui'
@@ -129,7 +129,7 @@ import { Progress } from 'zephyr-react-ui'
 </>
 ```
 
-### Tree 树形组件
+### Tree
 
 ```tsx
 import { Tree } from 'zephyr-react-ui'
@@ -147,23 +147,23 @@ const data = [
 />
 ```
 
-## 开发与测试
+## Development & Testing
 
-- 构建：`pnpm -C packages/ui build`
-- 测试：`pnpm -C packages/ui test`
-- 示例：`pnpm -C examples/react-vite dev`，访问 `http://localhost:5173/`
+- Build: `pnpm -C packages/ui build`
+- Test: `pnpm -C packages/ui test`
+- Example: `pnpm -C examples/react-vite dev`, visit `http://localhost:5173/`
 
-## 目录结构
+## Directory Structure
 
 ```
 packages/ui/src/
-  components/      组件实现与样式
-  types/           组件类型定义
-  config.tsx       ConfigProvider 与本地化/主题
-  config/classPrefix.ts 类名前缀工具
-  styles/variables.css 设计令牌
+  components/      component implementations and styles
+  types/           component type definitions
+  config.tsx       ConfigProvider with localization/theme
+  config/classPrefix.ts utility for class name prefix
+  styles/variables.css design tokens
 ```
 
-## 设计令牌
+## Design Tokens
 
-在 `styles/variables.css` 中定义颜色、间距、圆角、阴影等变量，可通过 `ConfigProvider` 的 `tokens` 进行覆写应用到文档根。
+Define colors, spacing, radii, and shadows in `styles/variables.css`. You can override tokens via `ConfigProvider`'s `tokens` and apply them to the document root.
