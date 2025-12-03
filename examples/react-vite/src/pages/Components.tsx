@@ -1,5 +1,5 @@
 import React from 'react';
-import { componentData } from '../utils/componentData.tsx';
+import { componentData } from '../utils/componentData';
 import { Button } from '@zephyr/ui';
 import { ArrowRight } from 'lucide-react';
 
@@ -85,7 +85,6 @@ export default function Components({ onComponentSelect }: ComponentsProps) {
         </p>
         <div className="flex flex-wrap gap-4">
           <Button
-            type="primary"
             onClick={() => onComponentSelect?.('Button')}
           >
             查看按钮组件

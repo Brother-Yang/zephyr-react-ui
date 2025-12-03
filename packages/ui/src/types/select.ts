@@ -8,7 +8,7 @@ export interface SelectOption<T extends string | number = string | number> {
   disabled?: boolean;
 }
 
-export interface SelectProps<T extends string | number = string | number> extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'onChange' | 'size' | 'multiple' | 'value'> {
+export interface SelectProps<T extends string | number = string | number> extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   options: SelectOption<T>[];
   value?: T | T[];
   onChange?: (value: T | T[]) => void;

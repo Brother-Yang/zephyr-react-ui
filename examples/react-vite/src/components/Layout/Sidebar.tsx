@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { categories } from '../../utils/componentData.tsx';
+import { categories } from '../../utils/componentData';
 import { ChevronDown, ChevronRight, Menu } from 'lucide-react';
 
 interface SidebarProps {
