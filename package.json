@@ -1,14 +1,13 @@
 {
   "name": "root",
-  "private": true,
   "packageManager": "pnpm@10.23.0",
   "version": "0.0.0",
   "description": "Workspace root",
   "type": "module",
   "scripts": {
-    "build": "pnpm -F @zephyr/ui build",
+    "build": "pnpm -F zephyr-ui build",
     "dev": "pnpm -F example dev",
-    "test": "pnpm -F @zephyr/ui test",
+    "test": "pnpm -F zephyr-ui test",
     "lint": "eslint ."
   },
   "dependencies": {

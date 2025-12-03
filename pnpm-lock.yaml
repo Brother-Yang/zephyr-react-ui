@@ -39,9 +39,6 @@ importers:
 
   examples/react-vite:
     dependencies:
-      '@zephyr/ui':
-        specifier: file:../../packages/ui
-        version: link:../../packages/ui
       lucide-react:
         specifier: ^0.263.1
         version: 0.263.1(react@18.3.1)
@@ -51,6 +48,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      zephyr-ui:
+        specifier: file:../../packages/ui
+        version: link:../../packages/ui
     devDependencies:
       '@types/react':
         specifier: ^19.2.7
