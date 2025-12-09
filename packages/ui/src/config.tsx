@@ -188,7 +188,7 @@ export function ConfigProvider({ theme = 'light', locale = enUS, tokens, classPr
     }
     return () => {
       if (media && handler) media.removeEventListener?.('change', handler);
-      setClassPrefix('zephyr-');
+      setClassPrefix('zephyr');
     };
   }, [theme, tokens && JSON.stringify(tokens), classPrefix]);
 
