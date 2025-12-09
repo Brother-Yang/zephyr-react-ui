@@ -1,4 +1,6 @@
-.zephyr-input-wrapper {
+@import "../../styles/variables.less";
+
+.@{prefix}-input-wrapper {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-sm);
@@ -10,10 +12,10 @@
   box-shadow: none;
 }
 
-.zephyr-input-wrapper:hover { border-color: var(--color-border-hover); }
-.zephyr-input-wrapper:focus-within { border-color: var(--color-border-focus); box-shadow: 0 0 0 3px var(--color-primary-light); }
+.@{prefix}-input-wrapper:hover { border-color: var(--color-border-hover); }
+.@{prefix}-input-wrapper:focus-within { border-color: var(--color-border-focus); box-shadow: 0 0 0 3px var(--color-primary-light); }
 
-.zephyr-input-control {
+.@{prefix}-input-control {
   border: none;
   outline: none;
   background: transparent;
@@ -24,16 +26,16 @@
   line-height: 1;
 }
 
-.zephyr-input-control::placeholder { color: var(--color-text-secondary); }
+.@{prefix}-input-control::placeholder { color: var(--color-text-secondary); }
 
 /* Sizes */
-.zephyr-input-small { min-height: var(--input-height-sm); font-size: var(--font-size-xs); padding: 0 var(--input-padding-inline-sm); }
-.zephyr-input-medium { min-height: var(--input-height-md); font-size: var(--font-size-sm); padding: 0 var(--input-padding-inline-md); }
-.zephyr-input-large { min-height: var(--input-height-lg); font-size: var(--font-size-base); padding: 0 var(--input-padding-inline-lg); }
+.@{prefix}-input-small { min-height: var(--input-height-sm); font-size: var(--font-size-xs); padding: 0 var(--input-padding-inline-sm); }
+.@{prefix}-input-medium { min-height: var(--input-height-md); font-size: var(--font-size-sm); padding: 0 var(--input-padding-inline-md); }
+.@{prefix}-input-large { min-height: var(--input-height-lg); font-size: var(--font-size-base); padding: 0 var(--input-padding-inline-lg); }
 
-.zephyr-prefix, .zephyr-suffix { color: var(--color-text-secondary); display: inline-flex; align-items: center; pointer-events: none; }
+.@{prefix}-prefix, .@{prefix}-suffix { color: var(--color-text-secondary); display: inline-flex; align-items: center; pointer-events: none; }
 
-.zephyr-clear {
+.@{prefix}-clear {
   border: none;
   background: transparent;
   color: var(--color-text-secondary);
@@ -47,13 +49,13 @@
 }
 
 /* Status */
-.zephyr-input-wrapper.zephyr-status-error { border-color: var(--color-error); }
-.zephyr-input-wrapper.zephyr-status-success { border-color: var(--color-success); }
-.zephyr-input-wrapper.zephyr-status-warning { border-color: var(--color-warning); }
+.@{prefix}-input-wrapper.@{prefix}-status-error { border-color: var(--color-error); }
+.@{prefix}-input-wrapper.@{prefix}-status-success { border-color: var(--color-success); }
+.@{prefix}-input-wrapper.@{prefix}-status-warning { border-color: var(--color-warning); }
 
 /* Ensure input font-size follows wrapper size */
-.zephyr-input-small .zephyr-input-control { font-size: var(--font-size-xs); }
-.zephyr-input-medium .zephyr-input-control { font-size: var(--font-size-sm); }
-.zephyr-input-large .zephyr-input-control { font-size: var(--font-size-base); }
+.@{prefix}-input-small .@{prefix}-input-control { font-size: var(--font-size-xs); }
+.@{prefix}-input-medium .@{prefix}-input-control { font-size: var(--font-size-sm); }
+.@{prefix}-input-large .@{prefix}-input-control { font-size: var(--font-size-base); }
 
-.zephyr-disabled { opacity: 0.6; cursor: not-allowed; }
+.@{prefix}-disabled { opacity: 0.6; cursor: not-allowed; }

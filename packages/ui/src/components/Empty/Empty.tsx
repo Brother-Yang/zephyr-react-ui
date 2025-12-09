@@ -1,6 +1,6 @@
 import React from 'react';
 import './Empty.less';
-import '../../styles/variables.less';
+
 import { withPrefix } from '../../config/classPrefix';
 
 export interface EmptyProps {

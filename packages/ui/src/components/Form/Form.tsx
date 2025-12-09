@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';
 import type { FormProps, FormItemProps, FormRule, FormApi } from '../../types/form';
 import './Form.less';
-import '../../styles/variables.less';
+
 import { withPrefix } from '../../config/classPrefix';
 
 type AnyValues = Record<string, any>;

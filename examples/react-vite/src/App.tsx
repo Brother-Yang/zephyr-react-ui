@@ -72,7 +72,7 @@ export default function App() {
 
   return (
     <ConfigProvider theme={theme} locale={locale}>
-      <Layout 
+      <Layout
         selectedComponent={selectedComponent}
         onComponentSelect={handleComponentSelect}
         theme={theme}

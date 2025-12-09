@@ -1,11 +1,13 @@
-.zephyr-radio {
+@import "../../styles/variables.less";
+
+.@{prefix}-radio {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-sm);
   color: var(--color-text);
 }
 
-.zephyr-radio-box {
+.@{prefix}-radio-box {
   width: 18px;
   height: 18px;
   border: 1px solid var(--color-border);
@@ -18,9 +20,9 @@
   position: relative;
 }
 
-.zephyr-radio-box:focus-within { box-shadow: 0 0 0 3px var(--color-primary-light); }
+.@{prefix}-radio-box:focus-within { box-shadow: 0 0 0 3px var(--color-primary-light); }
 
-.zephyr-radio-input {
+.@{prefix}-radio-input {
   appearance: none;
   -webkit-appearance: none;
   width: 18px;
@@ -29,9 +31,9 @@
   cursor: pointer;
 }
 
-.zephyr-radio-input:focus-visible { outline: none; }
+.@{prefix}-radio-input:focus-visible { outline: none; }
 
-.zephyr-radio-dot {
+.@{prefix}-radio-dot {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -43,21 +45,21 @@
   display: none;
 }
 
-.zephyr-radio-checked .zephyr-radio-dot { display: inline-block; }
+.@{prefix}-radio-checked .@{prefix}-radio-dot { display: inline-block; }
 
-.zephyr-radio-label { color: var(--color-text); }
-.zephyr-radio-disabled { opacity: 0.6; cursor: not-allowed; }
-.zephyr-radio-readonly { opacity: 0.8; cursor: default; }
-.zephyr-radio-error .zephyr-radio-box { border-color: var(--color-error); }
-.zephyr-radio-error .zephyr-radio-label { color: var(--color-error); }
+.@{prefix}-radio-label { color: var(--color-text); }
+.@{prefix}-radio-disabled { opacity: 0.6; cursor: not-allowed; }
+.@{prefix}-radio-readonly { opacity: 0.8; cursor: default; }
+.@{prefix}-radio-error .@{prefix}-radio-box { border-color: var(--color-error); }
+.@{prefix}-radio-error .@{prefix}-radio-label { color: var(--color-error); }
 
-.zephyr-radio-small .zephyr-radio-box { width: 16px; height: 16px; }
-.zephyr-radio-small .zephyr-radio-input { width: 16px; height: 16px; }
-.zephyr-radio-small .zephyr-radio-dot { width: 8px; height: 8px; }
+.@{prefix}-radio-small .@{prefix}-radio-box { width: 16px; height: 16px; }
+.@{prefix}-radio-small .@{prefix}-radio-input { width: 16px; height: 16px; }
+.@{prefix}-radio-small .@{prefix}-radio-dot { width: 8px; height: 8px; }
 
-.zephyr-radio-large .zephyr-radio-box { width: 22px; height: 22px; }
-.zephyr-radio-large .zephyr-radio-input { width: 22px; height: 22px; }
-.zephyr-radio-large .zephyr-radio-dot { width: 12px; height: 12px; }
+.@{prefix}-radio-large .@{prefix}-radio-box { width: 22px; height: 22px; }
+.@{prefix}-radio-large .@{prefix}-radio-input { width: 22px; height: 22px; }
+.@{prefix}-radio-large .@{prefix}-radio-dot { width: 12px; height: 12px; }
 
-.zephyr-radio-group { display: flex; gap: var(--spacing-md); }
-.zephyr-radio-vertical { flex-direction: column; }
+.@{prefix}-radio-group { display: flex; gap: var(--spacing-md); }
+.@{prefix}-radio-vertical { flex-direction: column; }

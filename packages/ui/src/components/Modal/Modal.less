@@ -1,20 +1,22 @@
-.zephyr-modal-root { position: fixed; inset: 0; display: none; }
-.zephyr-open { display: block; }
-.zephyr-hidden { display: none; }
+@import "../../styles/variables.less";
 
-.zephyr-modal-mask { position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(2px); }
+.@{prefix}-modal-root { position: fixed; inset: 0; display: none; }
+.@{prefix}-open { display: block; }
+.@{prefix}-hidden { display: none; }
 
-.zephyr-modal-wrapper { position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-start; overflow: auto; padding: 40px 24px; }
-.zephyr-centered { align-items: center; }
+.@{prefix}-modal-mask { position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(2px); }
 
-.zephyr-modal { background: var(--color-background); color: var(--color-text); border: 1px solid var(--color-border); border-radius: var(--radius-medium); box-shadow: var(--shadow-large); max-width: 90vw; animation: zephyr-modal-appear 0.18s ease-out; }
+.@{prefix}-modal-wrapper { position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-start; overflow: auto; padding: 40px 24px; }
+.@{prefix}-centered { align-items: center; }
 
-.zephyr-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--color-border); }
-.zephyr-modal-title { font-weight: 600; }
-.zephyr-modal-close { background: none; border: none; cursor: pointer; font-size: 18px; line-height: 1; color: var(--color-text); }
-.zephyr-modal-close:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--color-primary-light); border-radius: 6px; }
+.@{prefix}-modal { background: var(--color-background); color: var(--color-text); border: 1px solid var(--color-border); border-radius: var(--radius-medium); box-shadow: var(--shadow-large); max-width: 90vw; animation: ~"@{prefix}-modal-appear" 0.18s ease-out; }
 
-.zephyr-modal-body { padding: 16px; }
-.zephyr-modal-footer { display: flex; gap: 8px; justify-content: flex-end; padding: 12px 16px; border-top: 1px solid var(--color-border); }
+.@{prefix}-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--color-border); }
+.@{prefix}-modal-title { font-weight: 600; }
+.@{prefix}-modal-close { background: none; border: none; cursor: pointer; font-size: 18px; line-height: 1; color: var(--color-text); }
+.@{prefix}-modal-close:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--color-primary-light); border-radius: 6px; }
 
-@keyframes zephyr-modal-appear { from { transform: translateY(4px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.@{prefix}-modal-body { padding: 16px; }
+.@{prefix}-modal-footer { display: flex; gap: 8px; justify-content: flex-end; padding: 12px 16px; border-top: 1px solid var(--color-border); }
+
+@keyframes ~"@{prefix}-modal-appear" { from { transform: translateY(4px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

@@ -1,7 +1,7 @@
 import React, { useState, forwardRef } from 'react';
 import type { InputProps } from '../../types/input';
 import './Input.less';
-import '../../styles/variables.less';
+
 import { useConfig } from '../../config';
 import { withPrefix } from '../../config/classPrefix';
 

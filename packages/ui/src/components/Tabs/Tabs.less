@@ -1,13 +1,15 @@
-.zephyr-tabs {
+@import "../../styles/variables.less";
+
+.@{prefix}-tabs {
   display: block;
   border-radius: var(--radius-medium);
   background: var(--color-background);
   box-shadow: var(--shadow-small);
 }
 
-.zephyr-bordered { border: 1px solid var(--color-border); }
+.@{prefix}-bordered { border: 1px solid var(--color-border); }
 
-.zephyr-nav {
+.@{prefix}-nav {
   display: flex;
   gap: var(--spacing-sm);
   padding: var(--spacing-sm);
@@ -15,7 +17,7 @@
   background: var(--color-surface);
 }
 
-.zephyr-tab {
+.@{prefix}-tab {
   position: relative;
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--radius-small);
@@ -24,13 +26,13 @@
   transition: background-color var(--transition-medium), color var(--transition-medium);
 }
 
-.zephyr-tab:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--color-primary-light); }
+.@{prefix}-tab:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--color-primary-light); }
 
-.zephyr-tab:hover { background: var(--color-surface-hover); }
-.zephyr-tab.zephyr-disabled { color: var(--color-text-disabled); cursor: not-allowed; }
-.zephyr-tab.zephyr-active { color: var(--color-primary); }
+.@{prefix}-tab:hover { background: var(--color-surface-hover); }
+.@{prefix}-tab.@{prefix}-disabled { color: var(--color-text-disabled); cursor: not-allowed; }
+.@{prefix}-tab.@{prefix}-active { color: var(--color-primary); }
 
-.zephyr-ink {
+.@{prefix}-ink {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -40,8 +42,8 @@
   border-radius: 2px;
 }
 
-.zephyr-children { padding: var(--spacing-md); }
+.@{prefix}-children { padding: var(--spacing-md); }
 
-.zephyr-tabs-small .zephyr-tab { padding: var(--spacing-xs) var(--spacing-sm); font-size: var(--font-size-xs); }
-.zephyr-tabs-medium .zephyr-tab { font-size: var(--font-size-sm); }
-.zephyr-tabs-large .zephyr-tab { padding: var(--spacing-md) var(--spacing-lg); font-size: var(--font-size-base); }
+.@{prefix}-tabs-small .@{prefix}-tab { padding: var(--spacing-xs) var(--spacing-sm); font-size: var(--font-size-xs); }
+.@{prefix}-tabs-medium .@{prefix}-tab { font-size: var(--font-size-sm); }
+.@{prefix}-tabs-large .@{prefix}-tab { padding: var(--spacing-md) var(--spacing-lg); font-size: var(--font-size-base); }

@@ -1,3 +1,6 @@
+// variables.less
+@prefix: zephyr; // 默认前缀
+
 /* 设计令牌 - CSS Variables */
 :root {
   /* 颜色系统 */
@@ -165,10 +168,10 @@
   --color-success: #68d391;
   --color-warning: #f6e05e;
   --color-error: #fc8181;
-    --switch-on-bg: #4a9eff;
-    --switch-on-border: #4a9eff;
-    --switch-off-bg: #2d3748;
-    --switch-off-border: #4a5568;
+  --switch-on-bg: #4a9eff;
+  --switch-on-border: #4a9eff;
+  --switch-off-bg: #2d3748;
+  --switch-off-border: #4a5568;
 
   /* DatePicker dark tokens (manual) */
   --cal-primary-color: #4dabf7;
@@ -183,4 +186,3 @@
   --cal-today-bg: #1c3a5e;
   --cal-today-text: #74c0fc;
   }
-

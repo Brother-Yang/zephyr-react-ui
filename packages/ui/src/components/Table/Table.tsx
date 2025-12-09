@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useConfig } from '../../config';
 import type { TableProps, TableColumn } from '../../types/table';
 import './Table.less';
-import '../../styles/variables.less';
+
 import { Empty } from '../Empty';
 import { withPrefix } from '../../config/classPrefix';
 

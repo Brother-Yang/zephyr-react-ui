@@ -1,11 +1,13 @@
-.zephyr-switch {
+@import "../../styles/variables.less";
+
+.@{prefix}-switch {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-sm);
   color: var(--color-text);
 }
 
-.zephyr-switch-button {
+.@{prefix}-switch-button {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -20,10 +22,10 @@
   transition: background-color var(--transition-medium), border-color var(--transition-medium);
 }
 
-.zephyr-switch-button:hover { border-color: var(--color-border-hover); }
-.zephyr-switch-button:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--color-primary-light); }
+.@{prefix}-switch-button:hover { border-color: var(--color-border-hover); }
+.@{prefix}-switch-button:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--color-primary-light); }
 
-.zephyr-switch-thumb {
+.@{prefix}-switch-thumb {
   position: absolute;
   left: 2px;
   top: 50%;
@@ -37,19 +39,19 @@
   z-index: 1;
 }
 
-.zephyr-switch-checked {
+.@{prefix}-switch-checked {
   background: var(--switch-on-bg);
   border-color: var(--switch-on-border);
 }
-.zephyr-switch-checked .zephyr-switch-thumb { transform: translate(22px, -50%); }
+.@{prefix}-switch-checked .@{prefix}-switch-thumb { transform: translate(22px, -50%); }
 
-.zephyr-disabled { opacity: 0.6; cursor: not-allowed; }
-.zephyr-readonly { opacity: 0.8; cursor: default; }
-.zephyr-error .zephyr-switch-button { border-color: var(--color-error); }
-.zephyr-success .zephyr-switch-button { border-color: var(--color-success); }
-.zephyr-warning .zephyr-switch-button { border-color: var(--color-warning); }
+.@{prefix}-disabled { opacity: 0.6; cursor: not-allowed; }
+.@{prefix}-readonly { opacity: 0.8; cursor: default; }
+.@{prefix}-error .@{prefix}-switch-button { border-color: var(--color-error); }
+.@{prefix}-success .@{prefix}-switch-button { border-color: var(--color-success); }
+.@{prefix}-warning .@{prefix}-switch-button { border-color: var(--color-warning); }
 
-.zephyr-switch-content {
+.@{prefix}-switch-content {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -63,17 +65,17 @@
   z-index: 2;
 }
 
-.zephyr-switch-contentOn { left: 8px; right: calc(50% + var(--switch-text-gap)); text-align: left; opacity: 0; }
-.zephyr-switch-contentOff { left: calc(50% + var(--switch-text-gap)); right: 8px; text-align: right; opacity: 1; }
-.zephyr-switch-checked .zephyr-switch-contentOn { opacity: 1; }
-.zephyr-switch-checked .zephyr-switch-contentOff { opacity: 0; }
+.@{prefix}-switch-contentOn { left: 8px; right: calc(50% + var(--switch-text-gap)); text-align: left; opacity: 0; }
+.@{prefix}-switch-contentOff { left: calc(50% + var(--switch-text-gap)); right: 8px; text-align: right; opacity: 1; }
+.@{prefix}-switch-checked .@{prefix}-switch-contentOn { opacity: 1; }
+.@{prefix}-switch-checked .@{prefix}-switch-contentOff { opacity: 0; }
 
-.zephyr-switch-small .zephyr-switch-button { width: 36px; height: 20px; }
-.zephyr-switch-small .zephyr-switch-thumb { width: 16px; height: 16px; }
-.zephyr-switch-small .zephyr-switch-checked .zephyr-switch-thumb { transform: translate(18px, -50%); }
+.@{prefix}-switch-small .@{prefix}-switch-button { width: 36px; height: 20px; }
+.@{prefix}-switch-small .@{prefix}-switch-thumb { width: 16px; height: 16px; }
+.@{prefix}-switch-small .@{prefix}-switch-checked .@{prefix}-switch-thumb { transform: translate(18px, -50%); }
 
-.zephyr-switch-large .zephyr-switch-button { width: 56px; height: 32px; }
-.zephyr-switch-large .zephyr-switch-thumb { width: 28px; height: 28px; }
-.zephyr-switch-large .zephyr-switch-checked .zephyr-switch-thumb { transform: translate(26px, -50%); }
+.@{prefix}-switch-large .@{prefix}-switch-button { width: 56px; height: 32px; }
+.@{prefix}-switch-large .@{prefix}-switch-thumb { width: 28px; height: 28px; }
+.@{prefix}-switch-large .@{prefix}-switch-checked .@{prefix}-switch-thumb { transform: translate(26px, -50%); }
 
-.zephyr-switch-label { color: var(--color-text); }
+.@{prefix}-switch-label { color: var(--color-text); }

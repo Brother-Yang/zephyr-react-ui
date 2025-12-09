@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useConfig } from '../../config';
 import type { SelectProps } from '../../types/select';
 import './Select.less';
-import '../../styles/variables.less';
+
 import { withPrefix } from '../../config/classPrefix';
 
 export default function Select<T extends string | number = string | number>({

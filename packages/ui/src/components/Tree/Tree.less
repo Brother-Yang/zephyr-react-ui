@@ -1,12 +1,14 @@
-.zephyr-tree { display: grid; gap: 4px; color: var(--color-text); }
-.zephyr-tree-node { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 8px; padding: 4px 8px; border-radius: 6px; }
-.zephyr-tree-node { transition: background-color var(--transition-fast), border-color var(--transition-fast); }
-.zephyr-tree-node:hover:not(.zephyr-tree-selected):not(.zephyr-tree-node-disabled) { background: var(--color-surface-hover); }
-.zephyr-tree-node-disabled { opacity: 0.6; cursor: not-allowed; }
-.zephyr-tree-indent { display: inline-block; width: 16px; }
-.zephyr-tree-toggle { width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; }
-.zephyr-tree-toggle-btn { background: none; border: none; cursor: pointer; width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; }
-.zephyr-tree-checkbox { margin-right: 4px; }
-.zephyr-tree-title { display: inline-flex; align-items: center; gap: 6px; }
-.zephyr-tree-children { display: grid; gap: 2px; margin-left: 16px; border-left: 1px dashed var(--color-border); padding-left: 8px; width: 100%; grid-column: 1 / -1; }
-.zephyr-tree-selected { background: rgba(0, 102, 204, 0.16); }
+@import "../../styles/variables.less";
+
+.@{prefix}-tree { display: grid; gap: 4px; color: var(--color-text); }
+.@{prefix}-tree-node { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 8px; padding: 4px 8px; border-radius: 6px; }
+.@{prefix}-tree-node { transition: background-color var(--transition-fast), border-color var(--transition-fast); }
+.@{prefix}-tree-node:hover:not(.@{prefix}-tree-selected):not(.@{prefix}-tree-node-disabled) { background: var(--color-surface-hover); }
+.@{prefix}-tree-node-disabled { opacity: 0.6; cursor: not-allowed; }
+.@{prefix}-tree-indent { display: inline-block; width: 16px; }
+.@{prefix}-tree-toggle { width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; }
+.@{prefix}-tree-toggle-btn { background: none; border: none; cursor: pointer; width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; }
+.@{prefix}-tree-checkbox { margin-right: 4px; }
+.@{prefix}-tree-title { display: inline-flex; align-items: center; gap: 6px; }
+.@{prefix}-tree-children { display: grid; gap: 2px; margin-left: 16px; border-left: 1px dashed var(--color-border); padding-left: 8px; width: 100%; grid-column: 1 / -1; }
+.@{prefix}-tree-selected { background: rgba(0, 102, 204, 0.16); }
