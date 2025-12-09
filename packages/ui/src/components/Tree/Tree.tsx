@@ -1,7 +1,6 @@
 import React from 'react'
 import './Tree.less'
 import { withPrefix } from '../../config/classPrefix'
-import '../../styles/variables.less'
 import type { TreeProps, TreeNode } from '../../types/tree'
 
 function flatten(nodes: TreeNode[], map: Map<string, TreeNode>, parent: Map<string, string | null>, parentKey: string | null = null) {

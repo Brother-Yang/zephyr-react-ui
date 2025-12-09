@@ -1,6 +1,4 @@
 // variables.less
-@prefix: zephyr; // 默认前缀
-
 /* 设计令牌 - CSS Variables */
 :root {
   /* 颜色系统 */

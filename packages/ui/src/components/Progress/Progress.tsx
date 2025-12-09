@@ -1,7 +1,6 @@
 import React from 'react'
 import './Progress.less'
 import { withPrefix } from '../../config/classPrefix'
-import '../../styles/variables.less'
 import type { ProgressProps } from '../../types/progress'
 
 function clamp(n: number) { return Math.max(0, Math.min(100, n)) }
