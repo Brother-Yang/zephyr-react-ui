@@ -1,8 +1,8 @@
 import React from 'react';
 import type { ButtonProps } from '../../types/button';
-import './Button.css';
+import './Button.less';
 import { withPrefix } from '../../config/classPrefix';
-import '../../styles/variables.css';
+import '../../styles/variables.less';
 
 export default function Button({
   variant = 'primary',

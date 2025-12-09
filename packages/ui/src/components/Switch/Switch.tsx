@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { SwitchProps } from '../../types/switch';
-import './Switch.css';
-import '../../styles/variables.css';
+import './Switch.less';
+import '../../styles/variables.less';
 import { withPrefix } from '../../config/classPrefix';
 
 export default function Switch({

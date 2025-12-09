@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import './DatePicker.css';
+import './DatePicker.less';
 import { withPrefix } from '../../config/classPrefix';
 import type { DatePickerProps, CalendarDay, CalendarState } from '../../types/datepicker';
 import { useConfig } from '../../config';

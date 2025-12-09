@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Collapse.css'
+import './Collapse.less'
 import { withPrefix } from '../../config/classPrefix'
 import type { CollapseProps } from '../../types/collapse'
 

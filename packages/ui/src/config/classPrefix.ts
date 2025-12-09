@@ -1,7 +1,7 @@
 let CLASS_PREFIX = 'zephyr-'
 
 function normalizePrefix(prefix: string) {
-  const p = prefix || 'zephyr-'
+  const p = prefix || CLASS_PREFIX
   return p.endsWith('-') ? p : `${p}-`
 }
 
@@ -14,8 +14,5 @@ export function setClassPrefix(prefix: string) {
 }
 
 export function withPrefix(name: string) {
-  const base = `zephyr-${name}`
-  const current = `${CLASS_PREFIX}${name}`
-  if (CLASS_PREFIX === 'zephyr-') return base
-  return `${base} ${current}`
+  return `${CLASS_PREFIX}${name}`
 }

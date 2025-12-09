@@ -14,7 +14,7 @@ export default defineConfig({
       buildStart() {
         const outPath = resolve(__dirname, 'style.css');
         try {
-          const vars = readFileSync(resolve(__dirname, 'src/styles/variables.css'), 'utf8');
+          const vars = readFileSync(resolve(__dirname, 'src/styles/variables.less'), 'utf8');
           mkdirSync(resolve(__dirname), { recursive: true });
           writeFileSync(outPath, `${vars}\n`);
         } catch {

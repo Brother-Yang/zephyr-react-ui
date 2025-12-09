@@ -1,5 +1,5 @@
 import React from 'react'
-import './Timeline.css'
+import './Timeline.less'
 import { withPrefix } from '../../config/classPrefix'
 import type { TimelineProps } from '../../types/timeline'
 

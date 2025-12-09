@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { RadioGroupProps } from '../../types/radio';
 import Radio from './Radio';
-import './Radio.css';
+import './Radio.less';
 import { withPrefix } from '../../config/classPrefix';
 
 export default function RadioGroup<T extends string | number = string | number>({

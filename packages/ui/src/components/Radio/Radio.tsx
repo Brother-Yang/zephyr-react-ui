@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { RadioProps } from '../../types/radio';
-import './Radio.css';
-import '../../styles/variables.css';
+import './Radio.less';
+import '../../styles/variables.less';
 import { withPrefix } from '../../config/classPrefix';
 
 export default function Radio<T extends string | number = string | number>({

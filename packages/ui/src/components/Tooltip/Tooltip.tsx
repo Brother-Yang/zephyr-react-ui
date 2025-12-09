@@ -1,5 +1,5 @@
 import React from 'react'
-import './Tooltip.css'
+import './Tooltip.less'
 import { withPrefix } from '../../config/classPrefix'
 import type { TooltipProps } from '../../types/tooltip'
 

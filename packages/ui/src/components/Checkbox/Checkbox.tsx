@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import type { CheckboxProps } from '../../types/checkbox';
-import './Checkbox.css';
-import '../../styles/variables.css';
+import './Checkbox.less';
+import '../../styles/variables.less';
 import { withPrefix } from '../../config/classPrefix';
 
 export default function Checkbox({

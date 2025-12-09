@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './Drawer.css'
+import './Drawer.less'
 import { withPrefix } from '../../config/classPrefix'
-import '../../styles/variables.css'
+import '../../styles/variables.less'
 import type { DrawerProps } from '../../types/drawer'
 import { useConfig } from '../../config'
 

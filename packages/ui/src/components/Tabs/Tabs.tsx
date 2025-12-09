@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useState } from 'react';
 import type { TabsProps } from '../../types/tabs';
-import './Tabs.css';
-import '../../styles/variables.css';
+import './Tabs.less';
+import '../../styles/variables.less';
 import { withPrefix } from '../../config/classPrefix';
 
 export default function Tabs({

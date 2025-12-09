@@ -1,6 +1,6 @@
 export { ConfigProvider, enUS, zhCN, useConfig } from './config';
-import './styles/reset.css';
-import './styles/variables.css';
+import './styles/reset.less';
+import './styles/variables.less';
 export { Button } from './components/Button';
 export { default as DatePicker } from './components/DatePicker';
 export { default as Collapse } from './components/Collapse';

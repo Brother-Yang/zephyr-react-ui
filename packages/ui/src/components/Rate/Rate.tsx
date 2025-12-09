@@ -1,5 +1,5 @@
 import React from 'react'
-import './Rate.css'
+import './Rate.less'
 import { withPrefix } from '../../config/classPrefix'
 import type { RateProps } from '../../types/rate'
 
@@ -100,4 +100,3 @@ export default function Rate({
     </div>
   )
 }
-
